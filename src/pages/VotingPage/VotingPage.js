@@ -23,7 +23,6 @@ export default function VotingPage() {
       } catch (err) {
          console.log(err);
       }
-      console.log(dataImg);
    };
    const hist = async () => {
       try {
