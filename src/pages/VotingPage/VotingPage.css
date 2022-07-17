@@ -6,4 +6,56 @@
 }
 .vote-top {
 	display: flex;
+	margin-bottom: 20px;
+}
+.img-box {
+	position: relative;
+	margin-bottom: 50px;
+}
+.random-img {
+	width: 100%;
+	height: 360px;
+	object-fit: cover;
+	border-radius: 20px;
+}
+.img-action {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	width: 248px;
+	height: 80px;
+	bottom: -44px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: #ffffff;
+	border: 4px solid #ffffff;
+	border-radius: 30px;
+	box-sizing: content-box;
+	overflow: hidden;
+}
+.img-action-btn {
+	width: 80px;
+	height: 80px;
+}
+.img-action-btn:not(:last-child) {
+	margin-right: 4px;
+}
+.img-action-btn--like {
+	background: url(../../image/search/like-white-30.png) no-repeat center, #97eab9;
+}
+.img-action-btn--like:hover {
+	background: url(../../image/search/like-color-30.png) no-repeat center, rgba(151, 234, 185, 0.3);
+}
+.img-action-btn--favorite {
+	background: url(../../image/search/fav-white-30.png) no-repeat center, #ff868e;
+}
+.img-action-btn--favorite:hover {
+	background: url(../../image/search/fav-30.png) no-repeat center, rgba(255, 134, 142, 0.3);
+}
+.img-action-btn--dislike {
+	background: url(../../image/search/dislike-white-30.png) no-repeat center, #ffd280;
+}
+.img-action-btn--dislike:hover {
+	background: url(../../image/search/dislike-color-30.png) no-repeat center, rgba(255, 210, 128, 0.3);
 }
