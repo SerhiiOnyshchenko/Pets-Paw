@@ -1,13 +1,15 @@
 .App {
+	position: relative;
 	display: flex;
 	max-width: 1440px;
 	margin: 0 auto;
 }
 .Side-bar {
 	position: sticky;
+	top: 0;
 	padding: 37px 63px;
 	width: 665px;
-	height: 600px;
+	height: 100vh;
 	font-size: 20px;
 	line-height: 29px;
 	font-weight: 500;
