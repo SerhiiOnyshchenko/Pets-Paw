@@ -1,11 +1,11 @@
-import React from 'react';
-import './HomePage.css';
+import Container from './../../components/Container/Container';
+import s from './HomePage.module.css';
 
 export default function HomePage() {
    return (
-      <div className="home-page">
-         <div className="Rectangle"></div>
-         <div className="img-bg"></div>
-      </div>
+      <Container>
+         <div className={s.rectangle}></div>
+         <div className={s.img}></div>
+      </Container>
    );
 }
