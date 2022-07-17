@@ -1,0 +1,9 @@
+.vote-box {
+	padding: 20px;
+	min-height: 782px;
+	background: #ffffff;
+	border-radius: 20px;
+}
+.vote-top {
+	display: flex;
+}
