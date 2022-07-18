@@ -1,13 +1,3 @@
-.vote-box {
-	padding: 20px;
-	min-height: 1782px;
-	background: #ffffff;
-	border-radius: 20px;
-}
-.vote-top {
-	display: flex;
-	margin-bottom: 20px;
-}
 .img-box {
 	position: relative;
 	margin-bottom: 50px;
@@ -37,6 +27,7 @@
 .img-action-btn {
 	width: 80px;
 	height: 80px;
+	transition: var(--transition);
 }
 .img-action-btn:not(:last-child) {
 	margin-right: 4px;

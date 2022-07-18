@@ -44,8 +44,8 @@ export default function VotingPage() {
    return (
       <Container>
          <SearchBar />
-         <div className="vote-box">
-            <div className="vote-top">
+         <div className="page-box">
+            <div className="page-top">
                <BackButton />
                <ButtonInfo>voting</ButtonInfo>
             </div>
