@@ -27,3 +27,14 @@ export async function getVoteHistory() {
       });
    return data;
 }
+
+export async function getBreedImages(limit = 5, page = 1) {
+   return await axios
+      .get(`breeds?api_key=${MY_KEY}&limit=${limit}&page=${page}`)
+      .then(res => res.data);
+}
+export async function getBreedImagesByName(q = 'Akita') {
+   return await axios
+      .get(`breeds/search?api_key=${MY_KEY}&q=${q}`)
+      .then(res => res.data);
+}
