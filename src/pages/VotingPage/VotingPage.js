@@ -9,6 +9,7 @@ import {
    getVoteHistory,
 } from './../../services/api';
 import { useState, useEffect } from 'react';
+import UserActionLogs from '../../components/UserActionLogs/UserActionLogs';
 
 export default function VotingPage() {
    const [dataImg, setDataImg] = useState('');
@@ -24,10 +25,10 @@ export default function VotingPage() {
          console.log(err);
       }
    };
-   const hist = async () => {
+   const likeDislike = async ans => {
       try {
-         const { data } = await postVoteImage(dataImg.id, 1);
-         console.log(data);
+         await postVoteImage(dataImg.id, ans);
+         await fetch();
       } catch (err) {
          console.log(err);
       }
@@ -59,20 +60,21 @@ export default function VotingPage() {
                   <button
                      className="img-action-btn img-action-btn--like"
                      type="button"
-                     onClick={fetch}
+                     onClick={() => likeDislike(1)}
                   ></button>
                   <button
                      className="img-action-btn img-action-btn--favorite"
                      type="button"
-                     onClick={hist}
+                     onClick={histList}
                   ></button>
                   <button
                      className="img-action-btn img-action-btn--dislike"
                      type="button"
-                     onClick={histList}
+                     onClick={() => likeDislike(0)}
                   ></button>
                </div>
             </div>
+            <UserActionLogs />
          </div>
       </Container>
    );
