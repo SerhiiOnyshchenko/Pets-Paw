@@ -1,0 +1,85 @@
+.breed-info-box {
+	position: relative;
+	margin-bottom: 50px;
+}
+.breed-info-img {
+	width: 100%;
+	height: 360px;
+	object-fit: cover;
+	border-radius: 20px;
+}
+.breed-info-action {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	width: 90px;
+	height: 30px;
+	bottom: -15px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: #ffffff;
+	border-radius: 20px;
+}
+.breed-info-circle {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #fbe0dc;
+}
+.breed-info-circle:nth-child(2) {
+	background: #ff868e;
+}
+.breed-info-circle:not(:last-child) {
+	margin-right: 5px;
+}
+.breed-info-text {
+	position: relative;
+	padding: 25px 40px;
+	width: 640px;
+	height: 204px;
+	text-align: center;
+	border: 2px solid #fbe0dc;
+	border-radius: 20px;
+}
+.breed-info-name {
+	display: block;
+	position: absolute;
+	top: -31px;
+	left: 50%;
+	transform: translateX(-50%);
+	min-width: 190px;
+	padding: 5px 40px;
+	background: #ffffff;
+	border-radius: 20px;
+	font-weight: 500;
+	font-size: 36px;
+	line-height: 52px;
+	color: #1d1d1d;
+	white-space: nowrap;
+}
+.breed-info-title {
+	min-height: 30px;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 29px;
+	color: #8c8c8c;
+	margin-bottom: 20px;
+}
+.breed-info-flex {
+	display: flex;
+	text-align: left;
+}
+.breed-info-temper,
+.breed-info-anuther {
+	width: 50%;
+	font-weight: 500;
+	color: #1d1d1d;
+	font-size: 16px;
+	line-height: 23px;
+}
+.breed-info-text-info {
+	font-weight: 400;
+
+	color: #8c8c8c;
+}
