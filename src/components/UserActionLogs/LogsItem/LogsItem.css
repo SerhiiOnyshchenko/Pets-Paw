@@ -27,3 +27,17 @@
 	color: #1d1d1d;
 	margin: 0 5px;
 }
+.log-icon {
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+	margin-left: auto;
+}
+.log-icon--like {
+	background: url(../../../image/search/like-color-30.png) no-repeat center;
+	background-size: cover;
+}
+.log-icon--dislike {
+	background: url(../../../image/search/dislike-color-30.png) no-repeat center;
+	background-size: cover;
+}
