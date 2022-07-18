@@ -1,0 +1,65 @@
+.Select-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.Select-main {
+	width: 226px;
+	height: 40px;
+	padding: 8px 10px;
+	background: #f8f8f7;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 10px;
+	border: 2px solid #f8f8f7;
+	transition: var(--transition);
+}
+.Select-main:hover {
+	border: 2px solid #fbe0dc;
+}
+
+.Select-main--title {
+	font-size: 16px;
+	line-height: 24px;
+	color: #8c8c8c;
+}
+.Select-main--dropdown {
+	display: block;
+	width: 12px;
+	height: 12px;
+	background: url(../../image/sort/dropdown-12.png) no-repeat center;
+}
+.Select-options {
+	display: none;
+	position: absolute;
+	top: 40px;
+	left: 0;
+	padding: 20px;
+	width: 300px;
+	max-height: 300px;
+	background: #ffffff;
+	border-radius: 30px;
+	overflow: auto;
+	z-index: 5;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.Select-options::-webkit-scrollbar {
+	width: 2px;
+}
+.Select-option:not(:last-child) {
+	margin-bottom: 10px;
+}
+.Select-option {
+	text-overflow: ellipsis;
+	font-size: 16px;
+	line-height: 24px;
+	color: #8c8c8c;
+}
+.Select-options--active {
+	display: block;
+}
