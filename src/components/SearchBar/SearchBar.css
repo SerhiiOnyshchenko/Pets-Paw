@@ -13,6 +13,7 @@
 	background: #ffffff;
 	border-radius: 20px;
 	margin-right: 10px;
+	transition: var(--transition);
 }
 .SearchBar-form:hover {
 	border: 2px solid #fbe0dc;
@@ -41,6 +42,7 @@
 	width: 60px;
 	height: 60px;
 	border-radius: 20px;
+	transition: var(--transition);
 }
 
 .SearchBar-nav__link--likes {

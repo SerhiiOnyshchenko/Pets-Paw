@@ -4,6 +4,7 @@
 	background: url(../../image/back/back-20.png) no-repeat center, #fbe0dc;
 	border-radius: 10px;
 	margin-right: 10px;
+	transition: var(--transition);
 }
 .back-button:hover {
 	width: 40px;

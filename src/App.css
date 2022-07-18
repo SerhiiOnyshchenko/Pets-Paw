@@ -54,6 +54,7 @@
 
 	border-radius: 20px;
 	margin-bottom: 10px;
+	transition: var(--transition);
 }
 .link-img--vote {
 	background: #b4b7ff;
@@ -87,6 +88,7 @@
 	letter-spacing: 2px;
 	text-transform: uppercase;
 	color: var(--btn-color);
+	transition: var(--transition);
 }
 
 .link:hover .link-btn {
@@ -96,4 +98,17 @@
 .link--active:hover .link-btn {
 	background: var(--btn-bg-active);
 	color: var(--btn-active-color);
+}
+
+/* right box */
+
+.page-box {
+	padding: 20px;
+	min-height: 600px;
+	background: #ffffff;
+	border-radius: 20px;
+}
+.page-top {
+	display: flex;
+	margin-bottom: 20px;
 }
