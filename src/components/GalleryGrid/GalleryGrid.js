@@ -7,7 +7,7 @@ export default function GalleryGrid({ images, click }) {
          {images.map(el => (
             <GalleryItem
                key={el.id}
-               url={el.image.url}
+               url={el.url}
                name={el.name}
                click={click}
             />
