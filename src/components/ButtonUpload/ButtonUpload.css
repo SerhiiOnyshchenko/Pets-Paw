@@ -1,0 +1,34 @@
+.btn-upload {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 12px 30px;
+
+	font-weight: 500;
+	font-size: 12px;
+	line-height: 16px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: #ff868e;
+	background: #fbe0dc;
+	border-radius: 10px;
+	margin-left: auto;
+	transition: var(--transition);
+}
+.btn-upload-icon {
+	display: block;
+	width: 16px;
+	height: 16px;
+	background-image: url(../../image/upload/upload-16.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-right: 10px;
+	transition: var(--transition);
+}
+.btn-upload:hover {
+	background-color: #ff868e;
+	color: #ffffff;
+}
+.btn-upload:hover .btn-upload-icon {
+	background-image: url(../../image/upload/upload-white-16.png);
+}
