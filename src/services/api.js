@@ -1,18 +1,30 @@
 import axios from 'axios';
 
 const MY_KEY = 'bf68c230-9fae-4d41-96bf-7c818f5c2d04';
-const SUB_ID = 'user-dog-1234';
 axios.defaults.baseURL = 'https://api.thedogapi.com/v1/';
+axios.defaults.headers.common['x-api-key'] = MY_KEY;
 
-export async function votingRandomImage() {
+export async function votingRandomImage(
+   limit = 5,
+   order = 'Random',
+   type = [''],
+   breedId = ''
+) {
    return await axios
-      .get(`images/search?api_key=${MY_KEY}`)
+      .get(
+         `images/search?limit=${limit}&order=${order}&mime_types=${type}&breed_ids=${breedId}`
+      )
       .then(res => res.data);
 }
+
+export async function getImagesById(image_id) {
+   return await axios.get(`images/${image_id}`).then(res => res.data);
+}
+
 export function postVoteImage(id, value) {
    const config = {
       image_id: id,
-      sub_id: SUB_ID,
+      sub_id: MY_KEY,
       value,
    };
    return axios.post(`votes`, config);
@@ -20,7 +32,7 @@ export function postVoteImage(id, value) {
 
 export async function getVoteHistory() {
    const data = await axios
-      .get(`votes?api_key=${MY_KEY}&sub_id=${SUB_ID}&limit=10&page=1`)
+      .get(`votes?sub_id=${MY_KEY}&limit=10&page=1`)
       .then(res => {
          console.log(res);
          return res.data;
@@ -30,11 +42,15 @@ export async function getVoteHistory() {
 
 export async function getBreedImages(limit = 5, page = 1) {
    return await axios
-      .get(`breeds?api_key=${MY_KEY}&limit=${limit}&page=${page}`)
+      .get(`breeds?limit=${limit}&page=${page}`)
       .then(res => res.data);
 }
 export async function getBreedImagesByName(q = 'Akita') {
-   return await axios
-      .get(`breeds/search?api_key=${MY_KEY}&q=${q}`)
-      .then(res => res.data);
+   return await axios.get(`breeds/search?q=${q}`).then(res => res.data);
+}
+
+export async function getCategories() {
+   return await axios.get(`breeds`).then(res => {
+      return res.data;
+   });
 }
