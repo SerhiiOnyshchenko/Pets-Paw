@@ -1,7 +1,7 @@
 import './ButtonSelect.css';
 import { useState } from 'react';
 
-export default function ButtonSelect({ options, width, id, setSort }) {
+export default function ButtonSelect({ options, width, id, setSort, bgcolor }) {
    const [main, setMain] = useState(options[0]);
    const selectMain = el => {
       setMain(el);
@@ -19,7 +19,7 @@ export default function ButtonSelect({ options, width, id, setSort }) {
    return (
       <div className="Select-box">
          <div
-            style={{ width: `${width}px` }}
+            style={{ width: `${width}px`, backgroundColor: `${bgcolor}` }}
             className="Select-main"
             onClick={showOptions}
          >
