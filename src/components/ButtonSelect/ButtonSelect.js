@@ -1,10 +1,14 @@
 import './ButtonSelect.css';
-import { useState } from 'react';
 
-export default function ButtonSelect({ options, width, id, setSort, bgcolor }) {
-   const [main, setMain] = useState(options[0]);
+export default function ButtonSelect({
+   main,
+   options,
+   width,
+   id,
+   setSort,
+   bgcolor,
+}) {
    const selectMain = el => {
-      setMain(el);
       hiddenOptions();
       setSort(el);
    };
