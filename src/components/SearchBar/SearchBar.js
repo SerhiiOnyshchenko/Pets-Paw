@@ -30,7 +30,7 @@ export default function SearchBar() {
 
    return (
       <div className="SearchBar-box">
-         <form className="SearchBar-form">
+         <form className="SearchBar-form" onSubmit={() => {}}>
             <input
                className="SearchBar-input"
                type="text"

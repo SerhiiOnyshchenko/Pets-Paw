@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage/HomePage';
 import VotingPage from './pages/VotingPage/VotingPage';
 import GalleryPage from './pages/GalleryPage/GalleryPage';
 import BreedsPage from './pages/BreedsPage/BreedsPage';
+import SearchPage from './pages/SearchPage/SearchPage';
 
 export default function App() {
    const addActivePage = e => {
@@ -63,6 +64,7 @@ export default function App() {
             <Route path="voting" element={<VotingPage />} />
             <Route path="breed" element={<BreedsPage />} />
             <Route path="gallery" element={<GalleryPage />} />
+            <Route path="search" element={<SearchPage />} />
          </Routes>
       </div>
    );
