@@ -27,7 +27,11 @@ aside {
 	display: block;
 }
 
-html,
+html {
+	width: 100vw;
+	overflow-x: hidden;
+}
+
 body {
 	height: 100%;
 	width: 100%;
