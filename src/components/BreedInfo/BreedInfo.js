@@ -1,7 +1,6 @@
 import './BreedInfo.css';
 
-export default function BreedInfo({ url, attach }) {
-   console.log(attach);
+export default function BreedInfo({ url, selectedImg }) {
    return (
       <>
          <div className="breed-info-box">
@@ -15,30 +14,32 @@ export default function BreedInfo({ url, attach }) {
             </div>
          </div>
          <div className="breed-info-text">
-            <h2 className="breed-info-name">{attach.name}</h2>
-            <p className="breed-info-title">{attach.bred_for}</p>
+            <h2 className="breed-info-name">{selectedImg.name}</h2>
+            <p className="breed-info-title">{selectedImg.bred_for}</p>
             <div className="breed-info-flex">
                <div className="breed-info-temper">
                   <p>Temperament:</p>
-                  <p className="breed-info-text-info">{attach.temperament}</p>
+                  <p className="breed-info-text-info">
+                     {selectedImg.temperament}
+                  </p>
                </div>
                <div className="breed-info-anuther">
                   <p>
                      Height:{' '}
                      <span className="breed-info-text-info">
-                        {attach.height.metric} cm
+                        {selectedImg.height.metric} cm
                      </span>
                   </p>
                   <p>
                      Weight:{' '}
                      <span className="breed-info-text-info">
-                        {attach.weight.metric} kg
+                        {selectedImg.weight.metric} kg
                      </span>
                   </p>
                   <p>
                      Life span:{' '}
                      <span className="breed-info-text-info">
-                        {attach.life_span}
+                        {selectedImg.life_span}
                      </span>
                   </p>
                </div>
