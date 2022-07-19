@@ -8,8 +8,10 @@ import GalleryGrid from './../../components/GalleryGrid/GalleryGrid';
 import ButtonUpload from '../../components/ButtonUpload/ButtonUpload';
 import { getCategories, votingRandomImage } from '../../services/api';
 import './GalleryPage.css';
+import ModalPage from '../ModalPage/ModalPage';
 
 export default function GalleryPage() {
+   const [showModal, setShowModal] = useState(false);
    const [breedImages, setBreedImages] = useState([]);
    const [limit, setLimit] = useState('5 items per page');
    const [order, setOrder] = useState('Random');
@@ -77,7 +79,7 @@ export default function GalleryPage() {
             <div className="page-top">
                <BackButton />
                <ButtonInfo>gallery</ButtonInfo>
-               <ButtonUpload />
+               <ButtonUpload click={() => setShowModal(true)} />
             </div>
             <div className="gallery-page-filter">
                <div className="filter-item">
@@ -134,6 +136,7 @@ export default function GalleryPage() {
             </div>
             <GalleryGrid images={breedImages} click={() => {}} />
          </div>
+         {showModal && <ModalPage onClose={() => setShowModal(false)} />}
       </Container>
    );
 }
