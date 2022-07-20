@@ -13,8 +13,10 @@ import {
 } from '../../services/api';
 import ButtonSelect from '../../components/ButtonSelect/ButtonSelect';
 import BreedInfo from './../../components/BreedInfo/BreedInfo';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-export default function BreedsPage() {
+export default function BreedsPage({ search, setSearch }) {
+   const navigate = useNavigate();
    const [breedImages, setBreedImages] = useState([]);
    const [limit, setLimit] = useState('Limit: 5');
    const [breeds, setBreeds] = useState('All breeds');
@@ -22,6 +24,15 @@ export default function BreedsPage() {
    const [categories, setCategories] = useState([
       { id: 0, name: 'All breeds' },
    ]);
+
+   const location = useLocation();
+
+   useEffect(() => {
+      if (location.pathname === '/breed' && !location.hash) {
+         setSelectedImg(0);
+      }
+   }, [location]);
+
    useEffect(() => {
       fetchBreeds();
       fetchCategories();
@@ -67,6 +78,7 @@ export default function BreedsPage() {
       try {
          const [data] = await getBreedImagesByName(name);
          setSelectedImg(await getImagesById(data.reference_image_id));
+         navigate(`#${data.id}`);
       } catch (error) {
          console.log(error);
       }
@@ -76,14 +88,10 @@ export default function BreedsPage() {
 
    return (
       <Container>
-         <SearchBar />
+         <SearchBar search={search} setSearch={setSearch} />
          <div className="page-box">
             <div className="page-top">
-               <BackButton
-                  click={() => {
-                     setSelectedImg(0);
-                  }}
-               />
+               <BackButton />
                <ButtonInfo>breeds</ButtonInfo>
                {!selectedImg ? (
                   <>

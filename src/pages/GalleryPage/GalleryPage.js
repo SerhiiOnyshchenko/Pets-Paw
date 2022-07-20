@@ -10,7 +10,7 @@ import { getCategories, votingRandomImage } from '../../services/api';
 import './GalleryPage.css';
 import ModalPage from '../ModalPage/ModalPage';
 
-export default function GalleryPage() {
+export default function GalleryPage({ search, setSearch }) {
    const [showModal, setShowModal] = useState(false);
    const [breedImages, setBreedImages] = useState([]);
    const [limit, setLimit] = useState('5 items per page');
@@ -74,7 +74,7 @@ export default function GalleryPage() {
    const typeArr = ['All', 'Static', 'Animated'];
    return (
       <Container>
-         <SearchBar />
+         <SearchBar search={search} setSearch={setSearch} />
          <div className="page-box">
             <div className="page-top">
                <BackButton />

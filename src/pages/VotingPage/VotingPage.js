@@ -11,7 +11,7 @@ import {
 import { useState, useEffect } from 'react';
 import UserActionLogs from '../../components/UserActionLogs/UserActionLogs';
 
-export default function VotingPage() {
+export default function VotingPage({ search, setSearch }) {
    const [dataImg, setDataImg] = useState('');
    useEffect(() => {
       fetch();
@@ -43,7 +43,7 @@ export default function VotingPage() {
    };
    return (
       <Container>
-         <SearchBar />
+         <SearchBar search={search} setSearch={setSearch} />
          <div className="page-box">
             <div className="page-top">
                <BackButton />
