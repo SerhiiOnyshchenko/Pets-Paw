@@ -6,7 +6,13 @@ import ButtonInfo from './../../components/ButtonInfo/ButtonInfo';
 import ButtonSelect from './../../components/ButtonSelect/ButtonSelect';
 import GalleryGrid from './../../components/GalleryGrid/GalleryGrid';
 import ButtonUpload from '../../components/ButtonUpload/ButtonUpload';
-import { getCategories, votingRandomImage } from '../../services/api';
+import {
+   deleteFavouritesImage,
+   getCategories,
+   getFavouritesImage,
+   postFavouritesImage,
+   votingRandomImage,
+} from '../../services/api';
 import './GalleryPage.css';
 import ModalPage from '../ModalPage/ModalPage';
 
@@ -26,12 +32,27 @@ export default function GalleryPage({ search, setSearch }) {
       fetchCategories();
    }, []);
 
-   const fetchBreeds = async (limit, order, type, breedId) => {
+   const fetchBreeds = async (limit = 5, order, type, breedId) => {
       try {
          const data = await votingRandomImage(limit, order, type, breedId);
          setBreedImages(data);
       } catch (error) {
          console.log(error);
+      }
+   };
+
+   const handleFavourites = async id => {
+      const data = await getFavouritesImage();
+      for (const el of data) {
+         if (el.image_id === id) {
+            await deleteFavouritesImage(el.id);
+            return;
+         }
+      }
+      try {
+         await postFavouritesImage(id);
+      } catch (err) {
+         console.log(err);
       }
    };
 
@@ -134,7 +155,7 @@ export default function GalleryPage({ search, setSearch }) {
                   </div>
                </div>
             </div>
-            <GalleryGrid images={breedImages} click={() => {}} />
+            <GalleryGrid images={breedImages} click={handleFavourites} />
          </div>
          {showModal && <ModalPage onClose={() => setShowModal(false)} />}
       </Container>
