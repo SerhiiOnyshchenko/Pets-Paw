@@ -1,18 +1,14 @@
 import React from 'react';
 import LogsItem from './LogsItem/LogsItem';
 
-export default function UserActionLogs() {
-   const logs = [
-      { time: '22:35', id: 23, value: 1 },
-      { time: '22:33', id: 24, value: 0 },
-   ];
+export default function UserActionLogs({ history }) {
    return (
       <ul>
-         {logs.map(log => (
+         {history.map(log => (
             <LogsItem
                key={log.id}
-               time={log.time}
-               id={log.id}
+               time={log.created_at}
+               id={log.image_id}
                value={log.value}
             />
          ))}

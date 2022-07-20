@@ -32,12 +32,16 @@
 	height: 20px;
 	margin-right: 5px;
 	margin-left: auto;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 .log-icon--like {
-	background: url(../../../image/search/like-color-30.png) no-repeat center;
-	background-size: cover;
+	background-image: url(../../../image/search/like-color-30.png);
 }
 .log-icon--dislike {
-	background: url(../../../image/search/dislike-color-30.png) no-repeat center;
-	background-size: cover;
+	background-image: url(../../../image/search/dislike-color-30.png);
+}
+.log-icon--favourite {
+	background-image: url(../../../image/search/fav-color-30.png);
 }
