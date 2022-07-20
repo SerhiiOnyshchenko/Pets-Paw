@@ -13,7 +13,7 @@ export default function ModalPage({ onClose }) {
                   type="button"
                   onClick={onClose}
                ></button>
-               <h2 className="modal-title">Upload a .jpg or .png Cat Image</h2>
+               <h2 className="modal-title">Upload a .jpg or .png Dog Image</h2>
                <p className="modal-pretitle">
                   Any uploads must comply with the upload guidelines or face
                   deletion.
@@ -24,6 +24,11 @@ export default function ModalPage({ onClose }) {
                      <span>to upload</span>
                   </div>
                   <div className="modal-text">No file selected</div>
+                  <input
+                     className="modal-input"
+                     type="file"
+                     accept=".jpg,.png"
+                  ></input>
                </div>
                <button className="modal-btn-upload" type="button">
                   UPLOAD PHOTO
