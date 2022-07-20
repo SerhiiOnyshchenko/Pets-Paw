@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'https://api.thedogapi.com/v1/';
 axios.defaults.headers.common['x-api-key'] = MY_KEY;
 
 export async function votingRandomImage(
-   limit = 5,
+   limit = 1,
    order = 'Random',
    type = [''],
    breedId = ''
@@ -21,25 +21,47 @@ export async function getImagesById(image_id) {
    return await axios.get(`images/${image_id}`).then(res => res.data);
 }
 
+// Vote
+export async function getVoteHistory(limit) {
+   const data = await axios
+      .get(`votes?limit=${limit}&order=Desc&sub_id=${MY_KEY}`)
+      .then(res => res.data);
+   return data;
+}
+
 export function postVoteImage(id, value) {
    const config = {
       image_id: id,
       sub_id: MY_KEY,
-      value,
+      value: value,
    };
    return axios.post(`votes`, config);
 }
+export function deleteVoteImage(id) {
+   return axios.delete(`votes/${id}`);
+}
 
-export async function getVoteHistory() {
+// Favourites
+export async function getFavouritesImage(limit = '') {
    const data = await axios
-      .get(`votes?sub_id=${MY_KEY}&limit=10&page=1`)
-      .then(res => {
-         console.log(res);
-         return res.data;
-      });
+      .get(`favourites?&limit=${limit}&page=&order=Desc&sub_id=${MY_KEY}`)
+      .then(res => res.data);
    return data;
 }
 
+export function postFavouritesImage(id) {
+   const config = {
+      image_id: id,
+      sub_id: MY_KEY,
+   };
+   return axios.post(`favourites/`, config);
+}
+
+export function deleteFavouritesImage(id) {
+   return axios.delete(`favourites/${id}`);
+}
+
+// Breeds
 export async function getBreedImages(limit = 5, page = 1) {
    return await axios
       .get(`breeds?limit=${limit}&page=${page}`)
