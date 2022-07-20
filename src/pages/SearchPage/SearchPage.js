@@ -3,18 +3,21 @@ import BackButton from '../../components/BackButton/BackButton';
 import BreedsGrid from '../../components/BreedsGrid/BreedsGrid';
 import ButtonInfo from '../../components/ButtonInfo/ButtonInfo';
 import Container from '../../components/Container/Container';
+import Loader from '../../components/Loader/Loader';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import { getBreedImagesByName, getImagesById } from '../../services/api';
 import './SearchPage.css';
 
 export default function SearchPage({ search, setSearch }) {
    const [breedImages, setBreedImages] = useState([]);
+   const [loader, setLoader] = useState(false);
 
    useEffect(() => {
       fetchImagesByName(search);
    }, [search]);
 
    const fetchImagesByName = async name => {
+      setLoader(true);
       try {
          const data = await getBreedImagesByName(name);
          let showImages = [];
@@ -28,6 +31,7 @@ export default function SearchPage({ search, setSearch }) {
       } catch (error) {
          console.log(error);
       }
+      setLoader(false);
    };
 
    return (
@@ -41,7 +45,11 @@ export default function SearchPage({ search, setSearch }) {
             <div className="search-text">
                Search results for: <span className="search-name">{search}</span>
             </div>
-            <BreedsGrid images={breedImages} click={() => {}} />
+            {loader ? (
+               <Loader />
+            ) : (
+               <BreedsGrid images={breedImages} click={() => {}} />
+            )}
          </div>
       </Container>
    );
