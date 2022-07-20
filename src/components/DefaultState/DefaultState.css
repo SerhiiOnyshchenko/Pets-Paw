@@ -1,0 +1,10 @@
+.default-box {
+	padding: 18px 20px;
+	width: 100%;
+	font-size: 16px;
+	line-height: 24px;
+
+	color: #8c8c8c;
+	background: #f8f8f7;
+	border-radius: 10px;
+}
