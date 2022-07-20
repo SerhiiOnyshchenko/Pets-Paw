@@ -10,10 +10,11 @@
 	object-fit: cover;
 	border-radius: 20px;
 }
-.gallery-item:hover::before {
+.gallery-item::before {
 	content: " ";
 	display: block;
 	position: absolute;
+	opacity: 0;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -21,15 +22,13 @@
 	background: rgba(255, 134, 142, 0.6);
 	border-radius: 20px;
 	z-index: 2;
-	transition: background 400ms cubic-bezier(0.4, 0, 0.2, 1);
+	transition: var(--transition);
 }
+
 .gallery-img-fav {
-	opacity: 0;
-}
-.gallery-item:hover .gallery-img-fav {
 	position: absolute;
 	display: block;
-	opacity: 1;
+	opacity: 0;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -43,5 +42,10 @@
 	background: url(../../../image/fav-20.png) no-repeat center, #ffffff;
 	border-radius: 10px;
 	z-index: 3;
-	transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
+	transition: var(--transition);
+}
+
+.gallery-item:hover .gallery-img-fav,
+.gallery-item:hover::before {
+	opacity: 1;
 }
