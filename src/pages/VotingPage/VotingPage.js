@@ -7,17 +7,40 @@ import {
    postVoteImage,
    votingRandomImage,
    getVoteHistory,
+   postFavouritesImage,
+   getFavouritesImage,
 } from './../../services/api';
 import { useState, useEffect } from 'react';
 import UserActionLogs from '../../components/UserActionLogs/UserActionLogs';
 
 export default function VotingPage({ search, setSearch }) {
    const [dataImg, setDataImg] = useState('');
+   const [historyLikeDislike, setHistoryLikeDislike] = useState([]);
+   const [historyFavourit, setHistoryFavourit] = useState([]);
+   const [showHistory, setShowHistory] = useState([]);
+
    useEffect(() => {
-      fetch();
+      fetchVoteImage();
+      histList();
+      fetchFavouritesImage();
+      sortHistory();
    }, []);
 
-   const fetch = async () => {
+   useEffect(() => {
+      sortHistory();
+   }, [historyFavourit, historyLikeDislike]);
+
+   const sortHistory = () => {
+      const history = [...historyLikeDislike, ...historyFavourit];
+      history.sort((a, b) => {
+         let da = new Date(a.created_at),
+            db = new Date(b.created_at);
+         return db - da;
+      });
+      setShowHistory(history.slice(0, 5));
+   };
+
+   const fetchVoteImage = async () => {
       try {
          const [data] = await votingRandomImage();
          setDataImg(data);
@@ -25,22 +48,44 @@ export default function VotingPage({ search, setSearch }) {
          console.log(err);
       }
    };
-   const likeDislike = async ans => {
+
+   const likeDislike = async value => {
       try {
-         await postVoteImage(dataImg.id, ans);
-         await fetch();
+         await postVoteImage(dataImg.id, value);
+         await fetchVoteImage();
+         await histList();
       } catch (err) {
          console.log(err);
       }
    };
+
+   const handleFavourites = async () => {
+      try {
+         await postFavouritesImage(dataImg.id);
+         await fetchFavouritesImage();
+      } catch (err) {
+         console.log(err);
+      }
+   };
+
+   const fetchFavouritesImage = async () => {
+      try {
+         const data = await getFavouritesImage(5);
+         setHistoryFavourit(data);
+      } catch (err) {
+         console.log(err);
+      }
+   };
+
    const histList = async () => {
       try {
-         const { data } = await getVoteHistory();
-         console.log(data);
+         const data = await getVoteHistory(5);
+         setHistoryLikeDislike(data);
       } catch (err) {
          console.log(err);
       }
    };
+
    return (
       <Container>
          <SearchBar search={search} setSearch={setSearch} />
@@ -60,21 +105,21 @@ export default function VotingPage({ search, setSearch }) {
                   <button
                      className="img-action-btn img-action-btn--like"
                      type="button"
-                     onClick={() => likeDislike(1)}
+                     onClick={() => likeDislike(true)}
                   ></button>
                   <button
                      className="img-action-btn img-action-btn--favorite"
                      type="button"
-                     onClick={histList}
+                     onClick={handleFavourites}
                   ></button>
                   <button
                      className="img-action-btn img-action-btn--dislike"
                      type="button"
-                     onClick={() => likeDislike(0)}
+                     onClick={() => likeDislike(false)}
                   ></button>
                </div>
             </div>
-            <UserActionLogs />
+            <UserActionLogs history={showHistory} />
          </div>
       </Container>
    );
