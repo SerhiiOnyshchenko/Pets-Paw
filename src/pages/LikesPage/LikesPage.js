@@ -25,13 +25,13 @@ export default function LikesPage({ search, setSearch }) {
       setLoader(true);
       try {
          const data = await getVoteHistory();
-         const likeArr = [];
+         const promiseLikesArr = [];
          for (const el of data) {
             if (el.value === 1) {
-               const data = await getImagesById(el.image_id);
-               likeArr.push({ ...el, url: data.url });
+               promiseLikesArr.push(getImagesById(el.image_id));
             }
          }
+         const likeArr = await Promise.all(promiseLikesArr);
          setBreedImages(likeArr);
       } catch (err) {
          console.log(err);
