@@ -7,6 +7,7 @@ import Loader from '../../components/Loader/Loader';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import { getBreedImagesByName, getImagesById } from '../../services/api';
 import './SearchPage.css';
+import DefaultState from './../../components/DefaultState/DefaultState';
 
 export default function SearchPage({ search, setSearch }) {
    const [breedImages, setBreedImages] = useState([]);
@@ -47,6 +48,8 @@ export default function SearchPage({ search, setSearch }) {
             </div>
             {loader ? (
                <Loader />
+            ) : breedImages.length === 0 ? (
+               <DefaultState />
             ) : (
                <BreedsGrid images={breedImages} click={() => {}} />
             )}
