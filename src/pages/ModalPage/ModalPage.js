@@ -13,6 +13,7 @@ export default function ModalPage({ onClose }) {
    useEffect(() => {
       setSuccessFile(false);
       setErrorFile(false);
+      window.addEventListener('keydown', closeModalEscKey);
    }, []);
 
    const changeInput = evt => {
@@ -35,8 +36,18 @@ export default function ModalPage({ onClose }) {
       setUploading(false);
    };
 
+   function closeModalEscKey(e) {
+      if (e.target.className === 'App') {
+         onClose();
+      }
+      if (e.code === 'Escape') {
+         onClose();
+         window.removeEventListener('keydown', closeModalEscKey);
+      }
+   }
+
    return createPortal(
-      <div className="modal-backdrop">
+      <div className="modal-backdrop" onClick={closeModalEscKey}>
          <div className="App">
             <div className="modal-content">
                <button
