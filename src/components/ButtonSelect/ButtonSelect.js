@@ -1,13 +1,6 @@
 import './ButtonSelect.css';
 
-export default function ButtonSelect({
-   main,
-   options,
-   width,
-   id,
-   setSort,
-   bgcolor,
-}) {
+export default function ButtonSelect({ main, options, width, id, setSort }) {
    const selectMain = el => {
       hiddenOptions();
       setSort(el);
@@ -23,7 +16,7 @@ export default function ButtonSelect({
    return (
       <div className="Select-box">
          <div
-            style={{ width: `${width}px`, backgroundColor: `${bgcolor}` }}
+            style={{ width: `${width}px` }}
             className="Select-main"
             onClick={showOptions}
          >

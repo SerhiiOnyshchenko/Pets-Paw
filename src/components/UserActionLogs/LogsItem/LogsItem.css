@@ -6,7 +6,7 @@
 	font-size: 16px;
 	line-height: 24px;
 	color: #8c8c8c;
-	background: #f8f8f7;
+	background: var(--bg-grey-another);
 	border-radius: 10px;
 }
 .log-item:not(:last-child) {
@@ -17,16 +17,17 @@
 	width: 61px;
 	font-size: 16px;
 	line-height: 24px;
-	background: #ffffff;
+	background: var(--bg-another);
 	border-radius: 5px;
 	margin-right: 20px;
-	color: #1d1d1d;
+	color: var(--color);
 }
 .log-id {
 	font-weight: 500;
-	color: #1d1d1d;
+	color: var(--color);
 	margin: 0 5px;
 }
+
 .log-icon {
 	width: 20px;
 	height: 20px;

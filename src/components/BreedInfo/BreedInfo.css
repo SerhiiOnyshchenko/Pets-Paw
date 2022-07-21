@@ -18,17 +18,17 @@
 	bottom: -15px;
 	left: 50%;
 	transform: translateX(-50%);
-	background: #ffffff;
+	background: var(--bg-grey-white);
 	border-radius: 20px;
 }
 .breed-info-circle {
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
-	background: #fbe0dc;
+	background: var(--btn-bg-hover);
 }
 .breed-info-circle:nth-child(2) {
-	background: #ff868e;
+	background: var(--btn-bg-active);
 }
 .breed-info-circle:not(:last-child) {
 	margin-right: 5px;
@@ -39,7 +39,7 @@
 	width: 640px;
 	height: 204px;
 	text-align: center;
-	border: 2px solid #fbe0dc;
+	border: 2px solid var(--btn-bg-hover);
 	border-radius: 20px;
 }
 .breed-info-name {
@@ -50,12 +50,12 @@
 	transform: translateX(-50%);
 	min-width: 190px;
 	padding: 5px 40px;
-	background: #ffffff;
+	background: var(--bg-grey-white);
 	border-radius: 20px;
 	font-weight: 500;
 	font-size: 36px;
 	line-height: 52px;
-	color: #1d1d1d;
+	color: var(--color);
 	white-space: nowrap;
 }
 .breed-info-title {
@@ -63,7 +63,7 @@
 	font-weight: 500;
 	font-size: 20px;
 	line-height: 29px;
-	color: #8c8c8c;
+	color: var(--grey-color);
 	margin-bottom: 20px;
 }
 .breed-info-flex {
@@ -74,12 +74,15 @@
 .breed-info-anuther {
 	width: 50%;
 	font-weight: 500;
-	color: #1d1d1d;
+	color: var(--color);
 	font-size: 16px;
 	line-height: 23px;
+}
+.breed-info-temper {
+	margin-right: 20px;
 }
 .breed-info-text-info {
 	font-weight: 400;
 
-	color: #8c8c8c;
+	color: var(--grey-color);
 }

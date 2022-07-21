@@ -9,8 +9,8 @@
 	line-height: 16px;
 	letter-spacing: 2px;
 	text-transform: uppercase;
-	color: #ff868e;
-	background: #fbe0dc;
+	color: var(--btn-color);
+	background: var(--btn-bg-hover);
 	border-radius: 10px;
 	margin-left: auto;
 	transition: var(--transition);
@@ -26,8 +26,8 @@
 	transition: var(--transition);
 }
 .btn-upload:hover {
-	background-color: #ff868e;
-	color: #ffffff;
+	background-color: var(--btn-bg-active);
+	color: var(--btn-active-color);
 }
 .btn-upload:hover .btn-upload-icon {
 	background-image: url(../../image/upload/upload-white-16.png);

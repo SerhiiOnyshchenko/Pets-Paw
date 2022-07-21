@@ -39,7 +39,10 @@
 	font-size: 16px;
 	line-height: 24px;
 	text-align: center;
-	background: url(../../../image/fav-20.png) no-repeat center, #ffffff;
+	background-image: url(../../../image/fav-20.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: var(--bg-grey-white);
 	border-radius: 10px;
 	z-index: 3;
 	transition: var(--transition);

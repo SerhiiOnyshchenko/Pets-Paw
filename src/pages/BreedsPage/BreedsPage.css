@@ -1,23 +1,25 @@
 .btn-sort {
 	width: 40px;
 	height: 40px;
-
+	background-color: var(--bg-grey-another);
+	background-repeat: no-repeat;
+	background-position: center;
 	border-radius: 10px;
-	border: 2px solid #f8f8f7;
+	border: 2px solid var(--bg-grey-another);
 	transition: var(--transition);
 }
 .btn-sort--AZ {
-	background: url(../../image/sort/sort-20.png) no-repeat center, #f8f8f7;
+	background-image: url(../../image/sort/sort-20.png);
 	margin-right: 10px;
 }
 .btn-sort--AZ:hover {
-	background: url(../../image/sort/sort-color-20.png) no-repeat center, #f8f8f7;
+	background-image: url(../../image/sort/sort-color-20.png);
 	border: 2px solid #fbe0dc;
 }
 .btn-sort--ZA {
-	background: url(../../image/sort/soft-revert-20.png) no-repeat center, #f8f8f7;
+	background-image: url(../../image/sort/soft-revert-20.png);
 }
 .btn-sort--ZA:hover {
-	background: url(../../image/sort/sort-revert-color-20.png) no-repeat center, #f8f8f7;
+	background-image: url(../../image/sort/sort-revert-color-20.png);
 	border: 2px solid #fbe0dc;
 }

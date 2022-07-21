@@ -9,7 +9,6 @@
 	opacity: 1;
 	visibility: visible;
 	pointer-events: initial;
-	/* overflow-y: scroll; */
 	transform: scale(1);
 	transition: var(--transition);
 	z-index: 100;
@@ -34,7 +33,7 @@
 	width: 680px;
 	height: 100%;
 	text-align: center;
-	background: #f8f8f7;
+	background: var(--bg-grey);
 	border-radius: 20px;
 }
 .modal-btn-close {
@@ -59,7 +58,7 @@
 	font-weight: 500;
 	font-size: 36px;
 	line-height: 52px;
-	color: #1d1d1d;
+	color: var(--color);
 	margin-bottom: 10px;
 }
 .modal-link {
@@ -69,7 +68,7 @@
 	font-weight: 400;
 	font-size: 20px;
 	line-height: 30px;
-	color: #8c8c8c;
+	color: var(--grey-color);
 	margin-bottom: 40px;
 }
 .modal-drag-box {
@@ -89,21 +88,21 @@
 	font-weight: 500;
 	font-size: 20px;
 	line-height: 30px;
-	color: #1d1d1d;
-	background-color: #ffffff;
+	color: var(--color);
 	background-image: url(../../image/modal/upload-bg.png);
+	background-color: var(--bg);
 	background-repeat: no-repeat;
 	background-position: center;
-	border: 2px dashed #fbe0dc;
+	border: 2px dashed var(--btn-bg-hover);
 	border-radius: 20px;
 }
 .modal-drag--error {
-	background-color: #fbe0dc;
+	background-color: var(--btn-bg-hover);
 	border: 2px dashed #ff868e;
 }
 .modal-drag span {
 	margin: 0 5px;
-	color: #8c8c8c;
+	color: var(--grey-color);
 }
 .modal-input {
 	position: absolute;
@@ -119,7 +118,7 @@
 .modal-text {
 	font-size: 20px;
 	line-height: 30px;
-	color: #8c8c8c;
+	color: var(--grey-color);
 	margin-bottom: 20px;
 }
 
@@ -168,8 +167,8 @@
 	height: 60px;
 	font-size: 16px;
 	line-height: 24px;
-	color: #8c8c8c;
-	background: #ffffff;
+	color: var(--grey-color);
+	background: var(--bg);
 	border-radius: 10px;
 }
 .modal-success--icon {

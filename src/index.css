@@ -89,28 +89,11 @@ h6 {
 	font-weight: inherit;
 }
 
-:root {
-	--black-color: #1d1d1d;
-	--grey-color: #8c8c8c;
-	--btn-color: #ff868e;
-	--btn-active-color: #ffffff;
-
-	--body-bg: #f8f8f7;
-
-	--btn-bg-default: #ffffff;
-	--btn-bg-hover: #fbe0dc;
-	--btn-bg-active: #ff868e;
-
-	--img-border-hover: #ffffff;
-	--img-border-active: #fbe0dc;
-
-	--transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
-}
 body {
 	font-family: "Jost", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-size: 14px;
-	color: var(--black-color);
+	color: var(--color);
 	background-color: var(--body-bg);
 }

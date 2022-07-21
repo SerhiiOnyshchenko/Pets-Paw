@@ -26,11 +26,9 @@ export default function SearchBar({ search, setSearch, active }) {
       const form = document.querySelector('.SearchBar-form');
       input.addEventListener('focus', () => {
          form.style.border = '2px solid #ff868e';
-         input.style.color = '#1d1d1d';
       });
       input.addEventListener('blur', () => {
          form.style.border = '';
-         input.style.color = '';
       });
    }, []);
 

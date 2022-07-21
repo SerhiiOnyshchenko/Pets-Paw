@@ -109,7 +109,6 @@ export default function GalleryPage({ search, setSearch }) {
                      main={order}
                      options={orderArr}
                      width={290}
-                     bgcolor={'#ffffff'}
                      id={'order'}
                      setSort={setOrder}
                   />
@@ -121,7 +120,6 @@ export default function GalleryPage({ search, setSearch }) {
                      options={typeArr}
                      id={'type'}
                      width={290}
-                     bgcolor={'#ffffff'}
                      setSort={setType}
                   />
                </div>
@@ -132,7 +130,6 @@ export default function GalleryPage({ search, setSearch }) {
                      options={arrSelect}
                      width={290}
                      id={'breed'}
-                     bgcolor={'#ffffff'}
                      setSort={setBreeds}
                   />
                </div>
@@ -143,7 +140,6 @@ export default function GalleryPage({ search, setSearch }) {
                         main={limit}
                         options={limites}
                         width={240}
-                        bgcolor={'#ffffff'}
                         id={'limit'}
                         setSort={setLimit}
                      />

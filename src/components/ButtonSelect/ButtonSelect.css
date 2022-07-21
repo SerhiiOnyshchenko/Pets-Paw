@@ -10,12 +10,12 @@
 	width: 226px;
 	height: 40px;
 	padding: 8px 10px;
-	background: #f8f8f7;
+	background: var(--bg-grey-another);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	border-radius: 10px;
-	border: 2px solid #f8f8f7;
+	border: 2px solid var(--bg-grey-another);
 	transition: var(--transition);
 }
 .Select-main:hover {
@@ -41,7 +41,7 @@
 	padding: 20px;
 	width: 300px;
 	max-height: 300px;
-	background: #ffffff;
+	background: var(--bg-grey);
 	border-radius: 30px;
 	overflow: auto;
 	z-index: 5;

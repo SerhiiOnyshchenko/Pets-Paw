@@ -9,8 +9,8 @@
 	align-items: center;
 	width: 470px;
 	height: 60px;
-	border: 2px solid #ffffff;
-	background: #ffffff;
+	border: 2px solid var(--bg);
+	background: var(--bg);
 	border-radius: 20px;
 	margin-right: 10px;
 	transition: var(--transition);
@@ -19,21 +19,32 @@
 	border: 2px solid #fbe0dc;
 }
 
+input:focus,
 .SearchBar-input {
 	flex-grow: 1;
 	padding: 5px 10px;
 	font-weight: 400;
 	font-size: 20px;
 	line-height: 30px;
-	color: var(--grey-color);
+	background-color: transparent;
+	color: var(--color);
 }
 
 .SearchBar-submit {
 	width: 40px;
 	height: 40px;
 	border-radius: 10px;
-	background: url(../../image/search/search-20.png) no-repeat center, #fbe0dc;
+	background-color: var(--btn-bg-hover);
+	background-image: url(../../image/search/search-20.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	transition: var(--transition);
 }
+.SearchBar-submit:hover {
+	background-color: var(--btn-bg-active);
+	background-image: url(../../image/search/search-white-20.png);
+}
+
 .SearchBar-nav {
 	display: flex;
 }

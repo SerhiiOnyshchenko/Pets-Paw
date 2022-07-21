@@ -19,7 +19,7 @@
 	left: 50%;
 	transform: translateX(-50%);
 	background: #ffffff;
-	border: 4px solid #ffffff;
+	border: 4px solid var(--bg-grey);
 	border-radius: 30px;
 	box-sizing: content-box;
 	overflow: hidden;

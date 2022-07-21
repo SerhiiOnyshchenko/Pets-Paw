@@ -1,14 +1,15 @@
 .back-button {
 	width: 40px;
 	height: 40px;
-	background: url(../../image/back/back-20.png) no-repeat center, #fbe0dc;
+	background-color: var(--btn-bg-hover);
+	background-image: url(../../image/back/back-20.png);
+	background-repeat: no-repeat;
+	background-position: center;
 	border-radius: 10px;
 	margin-right: 10px;
 	transition: var(--transition);
 }
 .back-button:hover {
-	width: 40px;
-	height: 40px;
-	background: url(../../image/back/back-white-20.png) no-repeat center, #ff868e;
-	border-radius: 10px;
+	background-image: url(../../image/back/back-white-20.png);
+	background-color: var(--btn-bg-active);
 }

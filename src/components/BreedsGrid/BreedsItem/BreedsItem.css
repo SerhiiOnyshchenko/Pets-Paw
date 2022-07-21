@@ -39,7 +39,7 @@
 	line-height: 24px;
 	text-align: center;
 	color: #ff868e;
-	background: #ffffff;
+	background: var(--bg-grey-white);
 	border-radius: 10px;
 	z-index: 3;
 	transition: var(--transition);

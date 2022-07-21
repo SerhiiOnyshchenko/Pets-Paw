@@ -7,7 +7,7 @@
 .Side-bar {
 	position: sticky;
 	top: 0;
-	padding: 37px 63px;
+	padding: 30px 60px;
 	width: 665px;
 	height: 100vh;
 	font-size: 20px;
@@ -105,7 +105,7 @@
 .page-box {
 	padding: 20px;
 	min-height: 600px;
-	background: #ffffff;
+	background: var(--bg);
 	border-radius: 20px;
 }
 .page-top {
