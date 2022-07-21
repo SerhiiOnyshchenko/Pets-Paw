@@ -13,6 +13,7 @@ import { useState, useEffect } from 'react';
 import LikesPage from './pages/LikesPage/LikesPage';
 import DislikesPage from './pages/DislikesPage/DislikesPage';
 import FavouritesPage from './pages/FavouritesPage/FavouritesPage';
+import ToggleTheme from './components/ToggleTheme/ToggleTheme';
 
 export default function App() {
    const [searchText, setSearchText] = useState('');
@@ -42,9 +43,10 @@ export default function App() {
                <img className="logo-icon" src={logo} alt="logo" />
                PetsPaw
             </Link>
+            <ToggleTheme />
             <h1 className="Title">Hi intern!</h1>
             <p className="Text">Welcome to MI 2022 Front-end test</p>
-            <h2 className="titel-h2">Lets start using The Cat API</h2>
+            <h2 className="titel-h2">Lets start using The Dog API</h2>
             <nav className="nav">
                <Link to="voting" className="link" id="/voting">
                   <div className="link-img link-img--vote">
