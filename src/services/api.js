@@ -4,6 +4,7 @@ const MY_KEY = 'bf68c230-9fae-4d41-96bf-7c818f5c2d04';
 axios.defaults.baseURL = 'https://api.thedogapi.com/v1/';
 axios.defaults.headers.common['x-api-key'] = MY_KEY;
 
+// images
 export async function votingRandomImage(
    limit = 1,
    order = 'Random',
@@ -19,6 +20,21 @@ export async function votingRandomImage(
 
 export async function getImagesById(image_id) {
    return await axios.get(`images/${image_id}`).then(res => res.data);
+}
+
+export async function uploadFile(file) {
+   const config = {
+      file: file,
+      sub_id: MY_KEY,
+   };
+   const header = {
+      headers: {
+         'content-type': 'multipart/form-data',
+      },
+   };
+   return await axios
+      .post(`images/upload`, config, header)
+      .then(res => res.data);
 }
 
 // Vote

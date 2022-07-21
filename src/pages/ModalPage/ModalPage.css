@@ -62,6 +62,9 @@
 	color: #1d1d1d;
 	margin-bottom: 10px;
 }
+.modal-link {
+	color: #ff868e;
+}
 .modal-pretitle {
 	font-weight: 400;
 	font-size: 20px;
@@ -72,7 +75,6 @@
 .modal-drag-box {
 	position: relative;
 	width: 640px;
-	height: 370px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -95,6 +97,10 @@
 	border: 2px dashed #fbe0dc;
 	border-radius: 20px;
 }
+.modal-drag--error {
+	background-color: #fbe0dc;
+	border: 2px dashed #ff868e;
+}
 .modal-drag span {
 	margin: 0 5px;
 	color: #8c8c8c;
@@ -114,9 +120,13 @@
 	font-size: 20px;
 	line-height: 30px;
 	color: #8c8c8c;
+	margin-bottom: 20px;
 }
 
-.modal-btn-upload {
+.modal-btn-upload,
+.modal-btn-loading {
+	display: flex;
+	margin: 0 auto;
 	background: var(--btn-bg-active);
 	border-radius: 10px;
 	padding: 12px 40px;
@@ -125,9 +135,25 @@
 	font-weight: 500;
 	font-size: 12px;
 	line-height: 16px;
-	text-align: center;
 	letter-spacing: 2px;
 	transition: var(--transition);
+	margin-bottom: 20px;
+}
+
+.modal-btn-icon-upload {
+	width: 16px;
+	height: 16px;
+	margin-right: 10px;
+	background: url(../../image/modal/loading-white-16.png) no-repeat center;
+	animation: rotate 1s infinite linear;
+}
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(-360deg);
+	}
 }
 .modal-btn-upload:hover {
 	background: var(--btn-bg-hover);
@@ -152,9 +178,20 @@
 	margin-right: 10px;
 	background: url(../../image/modal/success-20.png) no-repeat center;
 }
-.modal-arror--icon {
+.modal-error--icon {
 	width: 20px;
 	height: 20px;
 	margin-right: 10px;
 	background: url(../../image/modal/error-20.png) no-repeat center;
+}
+
+.modal-file-img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 560px;
+	max-height: 280px;
+	object-fit: cover;
+	transform: translate(-50%, -50%);
+	border-radius: 10px;
 }
