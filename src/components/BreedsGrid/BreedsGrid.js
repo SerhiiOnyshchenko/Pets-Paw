@@ -7,9 +7,9 @@ export default function BreedsGrid({ images, click }) {
          {images.map(el => (
             <BreedsItem
                key={el.id}
-               url={el.image.url}
-               name={el.name}
-               click={click}
+               url={el.url}
+               name={el.breeds[0]?.name || 'not name'}
+               click={() => click(el.breeds[0]?.id)}
             />
          ))}
       </ul>

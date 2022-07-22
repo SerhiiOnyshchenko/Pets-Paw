@@ -47,8 +47,26 @@
 	z-index: 3;
 	transition: var(--transition);
 }
-
+.gallery-img-name {
+	position: absolute;
+	display: block;
+	opacity: 0;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 5px;
+	width: 180px;
+	font-size: 16px;
+	line-height: 24px;
+	text-align: center;
+	color: #ff868e;
+	background: var(--bg-grey-white);
+	border-radius: 10px;
+	z-index: 3;
+	transition: var(--transition);
+}
 .gallery-item:hover .gallery-img-fav,
+.gallery-item:hover .gallery-img-name,
 .gallery-item:hover::before {
 	opacity: 1;
 }
