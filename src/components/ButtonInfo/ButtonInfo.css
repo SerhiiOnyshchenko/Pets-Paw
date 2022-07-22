@@ -1,5 +1,5 @@
 .btn-info {
-	background: #ff868e;
+	background: var(--btn-bg-active);
 	border-radius: 10px;
 	padding: 5px 30px;
 	text-transform: uppercase;
