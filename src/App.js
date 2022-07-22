@@ -14,10 +14,12 @@ import LikesPage from './pages/LikesPage/LikesPage';
 import DislikesPage from './pages/DislikesPage/DislikesPage';
 import FavouritesPage from './pages/FavouritesPage/FavouritesPage';
 import ToggleTheme from './components/ToggleTheme/ToggleTheme';
+import BreedInfo from './components/BreedInfo/BreedInfo';
 
 export default function App() {
    const [searchText, setSearchText] = useState('');
    const location = useLocation();
+
    useEffect(() => {
       removeActivePage();
       if (location.pathname === '/gallery') {
@@ -90,7 +92,9 @@ export default function App() {
                element={
                   <BreedsPage search={searchText} setSearch={setSearchText} />
                }
-            />
+            >
+               <Route path=":breedId" element={<BreedInfo />} />
+            </Route>
             <Route
                path="gallery"
                element={
