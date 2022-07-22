@@ -21,7 +21,10 @@ export default function FavouritesPage({ search, setSearch }) {
       setLoader(true);
       try {
          const data = await getFavouritesImage();
-         setBreedImages(data);
+         const newDataArr = data.map(el =>
+            !el.breeds ? { ...el, breeds: [{}] } : el
+         );
+         setBreedImages(newDataArr);
       } catch (error) {
          console.log(error);
       }

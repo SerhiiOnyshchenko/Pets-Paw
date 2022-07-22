@@ -16,6 +16,7 @@ import './LikesPage.css';
 export default function LikesPage({ search, setSearch }) {
    const [breedImages, setBreedImages] = useState([]);
    const [loader, setLoader] = useState(false);
+   const [history, setHistory] = useState([]);
 
    useEffect(() => {
       histList();
@@ -25,6 +26,7 @@ export default function LikesPage({ search, setSearch }) {
       setLoader(true);
       try {
          const data = await getVoteHistory();
+         setHistory(data);
          const promiseLikesArr = [];
          for (const el of data) {
             if (el.value === 1) {
@@ -32,7 +34,10 @@ export default function LikesPage({ search, setSearch }) {
             }
          }
          const likeArr = await Promise.all(promiseLikesArr);
-         setBreedImages(likeArr);
+         const newLikeArr = likeArr.map(el =>
+            !el.breeds ? { ...el, breeds: [{}] } : el
+         );
+         setBreedImages(newLikeArr);
       } catch (err) {
          console.log(err);
       }
@@ -40,8 +45,9 @@ export default function LikesPage({ search, setSearch }) {
    };
 
    const removeLikes = async id => {
+      const [imgId] = history.filter(el => el.image_id === id);
       try {
-         await deleteVoteImage(id);
+         await deleteVoteImage(imgId.id);
          await histList();
       } catch (err) {
          console.log(err);
@@ -61,7 +67,11 @@ export default function LikesPage({ search, setSearch }) {
             ) : breedImages.length === 0 ? (
                <DefaultState />
             ) : (
-               <GalleryGrid images={breedImages} click={removeLikes} />
+               <GalleryGrid
+                  images={breedImages}
+                  click={removeLikes}
+                  showName={true}
+               />
             )}
          </div>
       </Container>
