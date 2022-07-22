@@ -72,7 +72,12 @@ export default function App() {
             <nav className="nav">
                <Link to="voting" className="link" id="/voting">
                   <div className="link-img link-img--vote">
-                     <img src={vote} alt="vote-table" />
+                     <img
+                        width="100"
+                        height="125"
+                        src={vote}
+                        alt="vote-table"
+                     />
                   </div>
 
                   <button className="link-btn" type="button">
@@ -81,7 +86,12 @@ export default function App() {
                </Link>
                <Link to="breed" className="link" id="/breed">
                   <div className="link-img link-img--breed">
-                     <img src={breed} alt="pet-breeds" />
+                     <img
+                        width="117"
+                        height="163"
+                        src={breed}
+                        alt="pet-breeds"
+                     />
                   </div>
 
                   <button className="link-btn" type="button">
@@ -90,7 +100,12 @@ export default function App() {
                </Link>
                <Link to="gallery" className="link" id="/gallery">
                   <div className="link-img link-img--gallery">
-                     <img src={search} alt="images-search" />
+                     <img
+                        width="112"
+                        height="190"
+                        src={search}
+                        alt="images-search"
+                     />
                   </div>
 
                   <button className="link-btn" type="button">
