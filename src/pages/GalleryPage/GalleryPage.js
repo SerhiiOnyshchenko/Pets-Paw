@@ -8,7 +8,6 @@ import GalleryGrid from './../../components/GalleryGrid/GalleryGrid';
 import ButtonUpload from '../../components/ButtonUpload/ButtonUpload';
 import {
    deleteFavouritesImage,
-   getCategories,
    getFavouritesImage,
    postFavouritesImage,
    votingRandomImage,
@@ -17,7 +16,7 @@ import './GalleryPage.css';
 import ModalPage from '../ModalPage/ModalPage';
 import Loader from '../../components/Loader/Loader';
 
-export default function GalleryPage({ search, setSearch }) {
+export default function GalleryPage({ search, setSearch, categories }) {
    const [loader, setLoader] = useState(false);
    const [showModal, setShowModal] = useState(false);
    const [breedImages, setBreedImages] = useState([]);
@@ -25,13 +24,9 @@ export default function GalleryPage({ search, setSearch }) {
    const [order, setOrder] = useState('Random');
    const [type, setType] = useState('All');
    const [breeds, setBreeds] = useState('All breeds');
-   const [categories, setCategories] = useState([
-      { id: '', name: 'All breeds' },
-   ]);
 
    useEffect(() => {
       fetchBreeds();
-      fetchCategories();
    }, []);
 
    const fetchBreeds = async (limit = 5, order, type, breedId) => {
@@ -57,19 +52,6 @@ export default function GalleryPage({ search, setSearch }) {
          await postFavouritesImage(id);
       } catch (err) {
          console.log(err);
-      }
-   };
-
-   const fetchCategories = async () => {
-      try {
-         const data = await getCategories();
-         const datArr = [...data].map(el => {
-            return { id: el.id, name: el.name };
-         });
-         datArr.unshift({ id: '', name: 'All breeds' });
-         setCategories(datArr);
-      } catch (error) {
-         console.log(error);
       }
    };
 

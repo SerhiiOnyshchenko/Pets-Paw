@@ -14,6 +14,7 @@ export default function ModalPage({ onClose }) {
       setSuccessFile(false);
       setErrorFile(false);
       window.addEventListener('keydown', closeModalEscKey);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
    const changeInput = evt => {

@@ -14,7 +14,7 @@ export default function BreedInfo() {
       if (location.pathname.split('/')[2]) {
          fetchBredByName(location.pathname.split('/')[2]);
       }
-   }, []);
+   }, [location.pathname]);
 
    const fetchBredByName = async breedId => {
       try {

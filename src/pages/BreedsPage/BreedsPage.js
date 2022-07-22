@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
-import { getCategories, votingRandomImage } from '../../services/api';
+import { votingRandomImage } from '../../services/api';
 import './BreedsPage.css';
 import Container from './../../components/Container/Container';
 import SearchBar from './../../components/SearchBar/SearchBar';
@@ -10,27 +10,20 @@ import ButtonSelect from '../../components/ButtonSelect/ButtonSelect';
 import BreedsGrid from '../../components/BreedsGrid/BreedsGrid';
 import Loader from '../../components/Loader/Loader';
 
-export default function BreedsPage({ search, setSearch }) {
+export default function BreedsPage({ search, setSearch, categories }) {
    const navigate = useNavigate();
    const [breedImages, setBreedImages] = useState([]);
    const [limit, setLimit] = useState('Limit: 5');
    const [breeds, setBreeds] = useState('All breeds');
    const [selectedImg, setSelectedImg] = useState(0);
    const [order, setOrder] = useState('Random');
-   const [categories, setCategories] = useState([
-      { id: 0, name: 'All breeds' },
-   ]);
+
    const [loader, setLoader] = useState(false);
    const location = useLocation();
 
    useEffect(() => {
       setSelectedImg(location.pathname.split('/')[2]);
    }, [location]);
-
-   useEffect(() => {
-      // fetchBreeds(5);
-      fetchCategories();
-   }, []);
 
    useEffect(() => {
       const numLimit = limit.split(' ')[1];
@@ -40,7 +33,7 @@ export default function BreedsPage({ search, setSearch }) {
       }
 
       fetchBreeds(numLimit, breedsId.id, order);
-   }, [limit, breeds, order]);
+   }, [limit, breeds, order, categories]);
 
    const fetchBreeds = async (limit, breedId, order, type) => {
       setLoader(true);
@@ -51,19 +44,6 @@ export default function BreedsPage({ search, setSearch }) {
          console.log(error);
       }
       setLoader(false);
-   };
-
-   const fetchCategories = async () => {
-      try {
-         const data = await getCategories();
-         const datArr = [...data].map(el => {
-            return { id: el.id, name: el.name };
-         });
-         datArr.unshift({ id: 0, name: 'All breeds' });
-         setCategories(datArr);
-      } catch (error) {
-         console.log(error);
-      }
    };
 
    const getImageId = breedId => {

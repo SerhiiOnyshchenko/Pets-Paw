@@ -14,7 +14,7 @@ export default function ToggleTheme() {
             setToggle(false);
          }
       }
-   }, []);
+   }, [currentTheme]);
 
    const toggleTheme = () => {
       if (toggle) {

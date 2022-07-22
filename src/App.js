@@ -15,10 +15,18 @@ import DislikesPage from './pages/DislikesPage/DislikesPage';
 import FavouritesPage from './pages/FavouritesPage/FavouritesPage';
 import ToggleTheme from './components/ToggleTheme/ToggleTheme';
 import BreedInfo from './components/BreedInfo/BreedInfo';
+import { getCategories } from './services/api';
 
 export default function App() {
    const [searchText, setSearchText] = useState('');
+   const [categories, setCategories] = useState([
+      { id: 0, name: 'All breeds' },
+   ]);
    const location = useLocation();
+
+   useEffect(() => {
+      fetchCategories();
+   }, []);
 
    useEffect(() => {
       removeActivePage();
@@ -37,6 +45,18 @@ export default function App() {
    const removeActivePage = () => {
       const links = document.querySelectorAll('.link');
       links.forEach(link => link.classList.remove('link--active'));
+   };
+   const fetchCategories = async () => {
+      try {
+         const data = await getCategories();
+         const datArr = [...data].map(el => {
+            return { id: el.id, name: el.name };
+         });
+         datArr.unshift({ id: 0, name: 'All breeds' });
+         setCategories(datArr);
+      } catch (error) {
+         console.log(error);
+      }
    };
    return (
       <div className="App">
@@ -90,7 +110,11 @@ export default function App() {
             <Route
                path="breed"
                element={
-                  <BreedsPage search={searchText} setSearch={setSearchText} />
+                  <BreedsPage
+                     search={searchText}
+                     setSearch={setSearchText}
+                     categories={categories}
+                  />
                }
             >
                <Route path=":breedId" element={<BreedInfo />} />
@@ -98,7 +122,11 @@ export default function App() {
             <Route
                path="gallery"
                element={
-                  <GalleryPage search={searchText} setSearch={setSearchText} />
+                  <GalleryPage
+                     search={searchText}
+                     setSearch={setSearchText}
+                     categories={categories}
+                  />
                }
             />
             <Route

@@ -26,10 +26,12 @@ export default function VotingPage({ search, setSearch }) {
       histList();
       fetchFavouritesImage();
       sortHistory();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
    useEffect(() => {
       sortHistory();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [historyFavourit, historyLikeDislike]);
 
    const sortHistory = () => {
@@ -66,6 +68,7 @@ export default function VotingPage({ search, setSearch }) {
    const handleFavourites = async () => {
       try {
          await postFavouritesImage(dataImg.id);
+         await fetchVoteImage();
          await fetchFavouritesImage();
       } catch (err) {
          console.log(err);
