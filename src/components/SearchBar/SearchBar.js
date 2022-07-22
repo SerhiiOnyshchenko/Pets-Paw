@@ -34,9 +34,11 @@ export default function SearchBar({ search, setSearch, active }) {
 
    const handleSubmit = e => {
       e.preventDefault();
-      setSearch(inputSearch);
-      setInputSearch('');
-      navigate('/search');
+      if (inputSearch) {
+         setSearch(inputSearch);
+         setInputSearch('');
+         navigate('/search');
+      }
    };
 
    const removeActiveLink = () => {
