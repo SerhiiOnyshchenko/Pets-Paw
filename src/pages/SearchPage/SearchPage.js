@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import BackButton from '../../components/BackButton/BackButton';
-import BreedsGrid from '../../components/BreedsGrid/BreedsGrid';
 import ButtonInfo from '../../components/ButtonInfo/ButtonInfo';
 import Container from '../../components/Container/Container';
 import Loader from '../../components/Loader/Loader';
@@ -8,8 +7,11 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import { getBreedImagesByName, getImagesById } from '../../services/api';
 import './SearchPage.css';
 import DefaultState from './../../components/DefaultState/DefaultState';
+import BreedsGrid from '../../components/BreedsGrid/BreedsGrid';
+import { useNavigate } from 'react-router-dom';
 
 export default function SearchPage({ search, setSearch }) {
+   const navigate = useNavigate();
    const [breedImages, setBreedImages] = useState([]);
    const [loader, setLoader] = useState(false);
 
@@ -24,8 +26,7 @@ export default function SearchPage({ search, setSearch }) {
          let showImages = [];
          for (const el of data) {
             if (el.reference_image_id) {
-               const data = await getImagesById(el.reference_image_id);
-               showImages.push({ ...el, image: data });
+               showImages.push(await getImagesById(el.reference_image_id));
             }
          }
          setBreedImages(showImages);
@@ -33,6 +34,10 @@ export default function SearchPage({ search, setSearch }) {
          console.log(error);
       }
       setLoader(false);
+   };
+
+   const handleImage = breedId => {
+      navigate(`/breed/${breedId}`);
    };
 
    return (
@@ -51,7 +56,7 @@ export default function SearchPage({ search, setSearch }) {
             ) : breedImages.length === 0 ? (
                <DefaultState />
             ) : (
-               <BreedsGrid images={breedImages} click={() => {}} />
+               <BreedsGrid images={breedImages} click={handleImage} />
             )}
          </div>
       </Container>
