@@ -1,19 +1,14 @@
+import { useEffect, useState } from 'react';
+import { useNavigate, useLocation, Outlet } from 'react-router-dom';
+import { getCategories, votingRandomImage } from '../../services/api';
 import './BreedsPage.css';
 import Container from './../../components/Container/Container';
 import SearchBar from './../../components/SearchBar/SearchBar';
 import BackButton from './../../components/BackButton/BackButton';
 import ButtonInfo from './../../components/ButtonInfo/ButtonInfo';
-import BreedsGrid from '../../components/BreedsGrid/BreedsGrid';
-import { useEffect, useState } from 'react';
-import {
-   getBreedImages,
-   getBreedImagesByName,
-   getCategories,
-   getImagesById,
-} from '../../services/api';
 import ButtonSelect from '../../components/ButtonSelect/ButtonSelect';
-import BreedInfo from './../../components/BreedInfo/BreedInfo';
-import { useNavigate, useLocation } from 'react-router-dom';
+import BreedsGrid from '../../components/BreedsGrid/BreedsGrid';
+import Loader from '../../components/Loader/Loader';
 
 export default function BreedsPage({ search, setSearch }) {
    const navigate = useNavigate();
@@ -21,39 +16,41 @@ export default function BreedsPage({ search, setSearch }) {
    const [limit, setLimit] = useState('Limit: 5');
    const [breeds, setBreeds] = useState('All breeds');
    const [selectedImg, setSelectedImg] = useState(0);
+   const [order, setOrder] = useState('Random');
    const [categories, setCategories] = useState([
       { id: 0, name: 'All breeds' },
    ]);
-
+   const [loader, setLoader] = useState(false);
    const location = useLocation();
 
    useEffect(() => {
-      if (location.pathname === '/breed' && !location.hash) {
-         setSelectedImg(0);
-      }
+      setSelectedImg(location.pathname.split('/')[2]);
    }, [location]);
 
    useEffect(() => {
-      fetchBreeds();
+      // fetchBreeds(5);
       fetchCategories();
    }, []);
 
    useEffect(() => {
       const numLimit = limit.split(' ')[1];
-      fetchBreeds(numLimit);
-   }, [limit]);
+      let breedsId = '';
+      if (breeds !== 'All breeds') {
+         [breedsId] = categories.filter(el => el.name === breeds);
+      }
 
-   useEffect(() => {
-      fetchBredByName(breeds);
-   }, [breeds]);
+      fetchBreeds(numLimit, breedsId.id, order);
+   }, [limit, breeds, order]);
 
-   const fetchBreeds = async limit => {
+   const fetchBreeds = async (limit, breedId, order, type) => {
+      setLoader(true);
       try {
-         const data = await getBreedImages(limit);
+         const data = await votingRandomImage(limit, order, type, breedId);
          setBreedImages(data);
       } catch (error) {
          console.log(error);
       }
+      setLoader(false);
    };
 
    const fetchCategories = async () => {
@@ -69,20 +66,15 @@ export default function BreedsPage({ search, setSearch }) {
       }
    };
 
-   const fetchBredByName = async name => {
-      if (name === 'All breeds') {
-         const numLimit = limit.split(' ')[1];
-         fetchBreeds(numLimit);
+   const getImageId = breedId => {
+      if (!breedId) {
+         console.log('not name, not image');
          return;
       }
-      try {
-         const [data] = await getBreedImagesByName(name);
-         setSelectedImg(await getImagesById(data.reference_image_id));
-         navigate(`#${data.id}`);
-      } catch (error) {
-         console.log(error);
-      }
+      setSelectedImg(breedId);
+      navigate(`${breedId}`);
    };
+
    const arrSelect = [...categories].map(el => el.name);
    const limites = ['Limit: 5', 'Limit: 10', 'Limit: 15', 'Limit: 20'];
 
@@ -110,27 +102,34 @@ export default function BreedsPage({ search, setSearch }) {
                         setSort={setLimit}
                      />
                      <button
-                        className="btn-sort btn-sort--AZ"
+                        className={
+                           order === 'Desc'
+                              ? 'btn-sort btn-sort--ZA--active'
+                              : 'btn-sort btn-sort--ZA'
+                        }
                         type="button"
-                        onClick={() => {}}
+                        onClick={() => setOrder('Desc')}
                      ></button>
                      <button
-                        className="btn-sort btn-sort--ZA"
+                        className={
+                           order === 'Asc'
+                              ? 'btn-sort btn-sort--AZ--active'
+                              : 'btn-sort btn-sort--AZ'
+                        }
                         type="button"
-                        onClick={() => {}}
+                        onClick={() => setOrder('Asc')}
                      ></button>
                   </>
                ) : (
-                  <ButtonInfo>{selectedImg.breeds[0].id}</ButtonInfo>
+                  <ButtonInfo>{selectedImg}</ButtonInfo>
                )}
             </div>
-            {!selectedImg ? (
-               <BreedsGrid images={breedImages} click={fetchBredByName} />
+            {loader ? (
+               <Loader />
+            ) : !selectedImg ? (
+               <BreedsGrid images={breedImages} click={getImageId} />
             ) : (
-               <BreedInfo
-                  url={selectedImg.url}
-                  selectedImg={selectedImg.breeds[0]}
-               />
+               <Outlet />
             )}
          </div>
       </Container>

@@ -8,18 +8,22 @@
 	border: 2px solid var(--bg-grey-another);
 	transition: var(--transition);
 }
-.btn-sort--AZ {
-	background-image: url(../../image/sort/sort-20.png);
+.btn-sort:not(:last-child) {
 	margin-right: 10px;
 }
-.btn-sort--AZ:hover {
+.btn-sort--ZA {
+	background-image: url(../../image/sort/sort-20.png);
+}
+.btn-sort--ZA:hover,
+.btn-sort--ZA--active {
 	background-image: url(../../image/sort/sort-color-20.png);
 	border: 2px solid #fbe0dc;
 }
-.btn-sort--ZA {
+.btn-sort--AZ {
 	background-image: url(../../image/sort/soft-revert-20.png);
 }
-.btn-sort--ZA:hover {
+.btn-sort--AZ:hover,
+.btn-sort--AZ--active {
 	background-image: url(../../image/sort/sort-revert-color-20.png);
 	border: 2px solid #fbe0dc;
 }
