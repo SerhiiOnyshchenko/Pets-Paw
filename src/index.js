@@ -6,9 +6,9 @@ import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-   // <React.StrictMode>
-   <BrowserRouter>
-      <App />
-   </BrowserRouter>
-   // </React.StrictMode>
+   <React.StrictMode>
+      <BrowserRouter basename="pets-paw-intern.netlify.app/">
+         <App />
+      </BrowserRouter>
+   </React.StrictMode>
 );
