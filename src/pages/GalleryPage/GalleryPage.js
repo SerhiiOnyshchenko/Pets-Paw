@@ -15,8 +15,10 @@ import {
 } from '../../services/api';
 import './GalleryPage.css';
 import ModalPage from '../ModalPage/ModalPage';
+import Loader from '../../components/Loader/Loader';
 
 export default function GalleryPage({ search, setSearch }) {
+   const [loader, setLoader] = useState(false);
    const [showModal, setShowModal] = useState(false);
    const [breedImages, setBreedImages] = useState([]);
    const [limit, setLimit] = useState('5 items per page');
@@ -33,12 +35,14 @@ export default function GalleryPage({ search, setSearch }) {
    }, []);
 
    const fetchBreeds = async (limit = 5, order, type, breedId) => {
+      setLoader(true);
       try {
          const data = await votingRandomImage(limit, order, type, breedId);
          setBreedImages(data);
       } catch (error) {
          console.log(error);
       }
+      setLoader(false);
    };
 
    const handleFavourites = async id => {
@@ -151,7 +155,11 @@ export default function GalleryPage({ search, setSearch }) {
                   </div>
                </div>
             </div>
-            <GalleryGrid images={breedImages} click={handleFavourites} />
+            {loader ? (
+               <Loader />
+            ) : (
+               <GalleryGrid images={breedImages} click={handleFavourites} />
+            )}
          </div>
          {showModal && <ModalPage onClose={() => setShowModal(false)} />}
       </Container>

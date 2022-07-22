@@ -12,12 +12,14 @@ import {
 } from './../../services/api';
 import { useState, useEffect } from 'react';
 import UserActionLogs from '../../components/UserActionLogs/UserActionLogs';
+import Loader from './../../components/Loader/Loader';
 
 export default function VotingPage({ search, setSearch }) {
    const [dataImg, setDataImg] = useState('');
    const [historyLikeDislike, setHistoryLikeDislike] = useState([]);
    const [historyFavourit, setHistoryFavourit] = useState([]);
    const [showHistory, setShowHistory] = useState([]);
+   const [loader, setLoader] = useState(false);
 
    useEffect(() => {
       fetchVoteImage();
@@ -41,12 +43,14 @@ export default function VotingPage({ search, setSearch }) {
    };
 
    const fetchVoteImage = async () => {
+      setLoader(true);
       try {
          const [data] = await votingRandomImage();
          setDataImg(data);
       } catch (err) {
          console.log(err);
       }
+      setLoader(false);
    };
 
    const likeDislike = async value => {
@@ -94,32 +98,39 @@ export default function VotingPage({ search, setSearch }) {
                <BackButton />
                <ButtonInfo>voting</ButtonInfo>
             </div>
-            <div className="img-box">
-               <img
-                  className="random-img"
-                  height="360"
-                  src={dataImg.url}
-                  alt="img"
-               />
-               <div className="img-action">
-                  <button
-                     className="img-action-btn img-action-btn--like"
-                     type="button"
-                     onClick={() => likeDislike(true)}
-                  ></button>
-                  <button
-                     className="img-action-btn img-action-btn--favorite"
-                     type="button"
-                     onClick={handleFavourites}
-                  ></button>
-                  <button
-                     className="img-action-btn img-action-btn--dislike"
-                     type="button"
-                     onClick={() => likeDislike(false)}
-                  ></button>
-               </div>
-            </div>
-            <UserActionLogs history={showHistory} />
+            {loader ? (
+               <Loader />
+            ) : (
+               <>
+                  <div className="img-box">
+                     <img
+                        className="random-img"
+                        height="360"
+                        src={dataImg.url}
+                        alt="img"
+                     />
+                     <div className="img-action">
+                        <button
+                           className="img-action-btn img-action-btn--like"
+                           type="button"
+                           onClick={() => likeDislike(true)}
+                        ></button>
+                        <button
+                           className="img-action-btn img-action-btn--favorite"
+                           type="button"
+                           onClick={handleFavourites}
+                        ></button>
+                        <button
+                           className="img-action-btn img-action-btn--dislike"
+                           type="button"
+                           onClick={() => likeDislike(false)}
+                        ></button>
+                     </div>
+                  </div>
+
+                  <UserActionLogs history={showHistory} />
+               </>
+            )}
          </div>
       </Container>
    );
