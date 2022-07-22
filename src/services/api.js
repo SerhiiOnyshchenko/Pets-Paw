@@ -13,7 +13,7 @@ export async function votingRandomImage(
 ) {
    return await axios
       .get(
-         `images/search?limit=${limit}&order=${order}&mime_types=${type}&breed_ids=${breedId}`
+         `images/search?limit=${limit}&order=${order}&mime_types=${type}&breed_ids=${breedId}&sub_id=${MY_KEY}`
       )
       .then(res => res.data);
 }
@@ -53,6 +53,7 @@ export function postVoteImage(id, value) {
    };
    return axios.post(`votes`, config);
 }
+
 export function deleteVoteImage(id) {
    return axios.delete(`votes/${id}`);
 }
@@ -78,17 +79,11 @@ export function deleteFavouritesImage(id) {
 }
 
 // Breeds
-export async function getBreedImages(limit = 5, page = 1) {
-   return await axios
-      .get(`breeds?limit=${limit}&page=${page}`)
-      .then(res => res.data);
-}
-export async function getBreedImagesByName(q = 'Akita') {
+
+export async function getBreedImagesByName(q) {
    return await axios.get(`breeds/search?q=${q}`).then(res => res.data);
 }
 
 export async function getCategories() {
-   return await axios.get(`breeds`).then(res => {
-      return res.data;
-   });
+   return await axios.get(`breeds`).then(res => res.data);
 }
