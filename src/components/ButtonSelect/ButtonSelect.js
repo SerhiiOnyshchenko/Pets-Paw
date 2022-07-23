@@ -14,9 +14,9 @@ export default function ButtonSelect({ main, options, width, id, setSort }) {
       selectOptions.classList.remove('select__options--active');
    };
    return (
-      <div className="select__box">
+      <div className="select__box" style={{ width: `${width}` }}>
          <div
-            style={{ width: `${width}px` }}
+            style={{ width: `${width}` }}
             className="select__main"
             onClick={showOptions}
          >

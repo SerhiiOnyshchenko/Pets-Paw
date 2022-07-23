@@ -18,7 +18,8 @@
 	background-position: center;
 	z-index: 2;
 }
-
+@media screen and (max-width: 768px) {
+}
 @media screen and (max-width: 1024px) {
 	.home-page__side-bar .side-bar {
 		display: block;

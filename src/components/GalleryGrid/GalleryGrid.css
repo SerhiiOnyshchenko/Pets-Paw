@@ -21,3 +21,14 @@
 	grid-column: auto / span 2;
 	grid-row: auto / span 2;
 }
+@media screen and (max-width: 768px) {
+	.gallery__items {
+		display: block;
+	}
+	.gallery__item {
+		height: 200px;
+	}
+	.gallery__item:not(:last-child) {
+		margin-bottom: 10px;
+	}
+}

@@ -32,3 +32,8 @@
 .btn-upload:hover .btn-upload__icon {
 	background-image: url(../../image/upload/upload-white-16.png);
 }
+@media screen and (max-width: 768px) {
+	.btn-upload {
+		width: 100%;
+	}
+}

@@ -77,8 +77,12 @@ export default function ModalPage({ onClose }) {
                            : 'modal-page__drag'
                      }
                   >
-                     Drag here<span>your file or</span>Click here
-                     <span>to upload</span>
+                     <p>
+                        Drag here<span>your file or</span>
+                     </p>
+                     <p>
+                        Click here<span>to upload</span>
+                     </p>
                   </div>
                   {fileInput && (
                      <img
@@ -123,14 +127,14 @@ export default function ModalPage({ onClose }) {
                {successFile && (
                   <div className="modal-page__success">
                      <span className="modal-page__success--icon"></span>
-                     Thanks for the Upload - Cat found!
+                     Thanks for the Upload - Dog found!
                   </div>
                )}
 
                {errorFile && (
                   <div className="modal-page__success">
                      <span className="modal-page__error--icon"></span>
-                     No Cat found - try a different one
+                     No Dog found - try a different one
                   </div>
                )}
             </div>

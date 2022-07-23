@@ -70,6 +70,8 @@ export default function GalleryPage({ search, setSearch, categories }) {
       fetchBreeds(numLimit, order, typeArr, breedID?.id);
    };
 
+   const widthMobile = window.innerWidth;
+
    const arrSelect = [...categories].map(el => el.name);
    const limites = [
       '5 items per page',
@@ -83,7 +85,7 @@ export default function GalleryPage({ search, setSearch, categories }) {
       <Container>
          <SearchBar search={search} setSearch={setSearch} />
          <div className="page-box">
-            <div className="page-top">
+            <div className="page-top gallery-page__top">
                <BackButton />
                <ButtonInfo>gallery</ButtonInfo>
                <ButtonUpload click={() => setShowModal(true)} />
@@ -94,7 +96,7 @@ export default function GalleryPage({ search, setSearch, categories }) {
                   <ButtonSelect
                      main={order}
                      options={orderArr}
-                     width={290}
+                     width={widthMobile > 768 ? '290px' : '100%'}
                      id={'order'}
                      setSort={setOrder}
                   />
@@ -105,7 +107,7 @@ export default function GalleryPage({ search, setSearch, categories }) {
                      main={type}
                      options={typeArr}
                      id={'type'}
-                     width={290}
+                     width={widthMobile > 768 ? '290px' : '100%'}
                      setSort={setType}
                   />
                </div>
@@ -114,18 +116,18 @@ export default function GalleryPage({ search, setSearch, categories }) {
                   <ButtonSelect
                      main={breeds}
                      options={arrSelect}
-                     width={290}
+                     width={widthMobile > 768 ? '290px' : '100%'}
                      id={'breed'}
                      setSort={setBreeds}
                   />
                </div>
                <div className="filter__item">
                   <p className="filter__title">limit</p>
-                  <div style={{ display: 'flex' }}>
+                  <div className="filter__two-btn">
                      <ButtonSelect
                         main={limit}
                         options={limites}
-                        width={240}
+                        width={widthMobile > 768 ? '240px' : '100%'}
                         id={'limit'}
                         setSort={setLimit}
                      />

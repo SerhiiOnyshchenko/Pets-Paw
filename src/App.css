@@ -17,11 +17,6 @@
 	display: flex;
 	margin-bottom: 20px;
 }
-@media screen and (max-width: 425px) {
-}
-
-@media screen and (max-width: 768px) {
-}
 
 @media screen and (max-width: 1024px) {
 	.App {
@@ -29,6 +24,16 @@
 		max-width: 768px;
 	}
 	.page-box {
-		width: 708px;
+		max-width: 708px;
+	}
+}
+@media screen and (max-width: 768px) {
+	.App {
+		max-width: 425px;
+	}
+}
+@media screen and (max-width: 425px) {
+	.App {
+		min-width: 320px;
 	}
 }

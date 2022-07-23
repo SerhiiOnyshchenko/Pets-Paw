@@ -53,3 +53,15 @@
 .vote-page__img-action-btn--dislike:hover {
 	background: url(../../image/search/dislike-color-30.png) no-repeat center, rgba(255, 210, 128, 0.3);
 }
+@media screen and (max-width: 768px) {
+	.vote-page__img-box {
+		height: 166px;
+	}
+	.vote-page__img-random {
+		height: 166px;
+	}
+	.vote-page__img-action {
+		width: 186px;
+		height: 60px;
+	}
+}

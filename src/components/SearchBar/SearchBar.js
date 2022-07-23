@@ -50,9 +50,42 @@ export default function SearchBar({ search, setSearch, active }) {
    };
 
    return (
-      <div className="search-bar__box">
-         <MenuBurger />
-         <form className="search-bar__form" onSubmit={handleSubmit}>
+      <>
+         <div className="search-bar__box">
+            <MenuBurger />
+            <form className="search-bar__form" onSubmit={handleSubmit}>
+               <input
+                  className="search-bar__input"
+                  type="text"
+                  name="search"
+                  value={inputSearch}
+                  onChange={e => setInputSearch(e.target.value)}
+                  placeholder="Search for breeds by name"
+               />
+               <button className="search-bar__submit" type="submit"></button>
+            </form>
+            <nav className="search-bar__nav">
+               <Link
+                  className="search-bar__nav-link search-bar__nav-link--likes"
+                  to="/likes"
+                  id="/likes"
+               ></Link>
+               <Link
+                  className="search-bar__nav-link search-bar__nav-link--favourites "
+                  to="/favourites"
+                  id="/favourites"
+               ></Link>
+               <Link
+                  className="search-bar__nav-link search-bar__nav-link--dislikes"
+                  to="/dislikes"
+                  id="/dislikes"
+               ></Link>
+            </nav>
+         </div>
+         <form
+            className="search-bar__form search-bar__form--mobile"
+            onSubmit={handleSubmit}
+         >
             <input
                className="search-bar__input"
                type="text"
@@ -63,23 +96,6 @@ export default function SearchBar({ search, setSearch, active }) {
             />
             <button className="search-bar__submit" type="submit"></button>
          </form>
-         <nav className="search-bar__nav">
-            <Link
-               className="search-bar__nav-link search-bar__nav-link--likes"
-               to="/likes"
-               id="/likes"
-            ></Link>
-            <Link
-               className="search-bar__nav-link search-bar__nav-link--favourites "
-               to="/favourites"
-               id="/favourites"
-            ></Link>
-            <Link
-               className="search-bar__nav-link search-bar__nav-link--dislikes"
-               to="/dislikes"
-               id="/dislikes"
-            ></Link>
-         </nav>
-      </div>
+      </>
    );
 }

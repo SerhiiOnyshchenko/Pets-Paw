@@ -1,3 +1,7 @@
+.breed-page--mobile {
+	display: flex;
+	align-items: center;
+}
 .btn-sort {
 	width: 40px;
 	height: 40px;
@@ -8,6 +12,7 @@
 	border: 2px solid var(--bg-grey-another);
 	transition: var(--transition);
 }
+
 .btn-sort:not(:last-child) {
 	margin-right: 10px;
 }
@@ -26,4 +31,19 @@
 .btn-sort--AZ--active {
 	background-image: url(../../image/sort/sort-revert-color-20.png);
 	border: 2px solid #fbe0dc;
+}
+
+@media screen and (max-width: 768px) {
+	.breed-page--mobile {
+		justify-content: space-between;
+		width: 100%;
+	}
+	.breed-page__top {
+		flex-wrap: wrap;
+		gap: 10px;
+		width: 100%;
+	}
+	.select__box {
+		max-width: 100%;
+	}
 }

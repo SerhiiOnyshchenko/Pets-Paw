@@ -1,7 +1,7 @@
 .gallery-page__filter {
 	padding: 10px 20px;
 	width: 100%;
-	height: 156px;
+	min-height: 156px;
 	display: flex;
 	flex-wrap: wrap;
 	background: var(--bg-grey-another);
@@ -12,10 +12,10 @@
 	width: 290px;
 	margin-bottom: 10px;
 }
-.filter__item .Select-main {
+.filter__item .select__main {
 	background-color: var(--bg-another);
 }
-.filter__item .Select-main--title {
+.filter__item .select__main--title {
 	color: var(--color);
 }
 .filter__item:nth-child(2n + 1) {
@@ -42,4 +42,26 @@
 .filter__btn-update:hover {
 	background-image: url(../../image/update/update-white-20.png);
 	background-color: var(--btn-bg-active);
+}
+.filter__two-btn {
+	display: flex;
+}
+
+@media screen and (max-width: 768px) {
+	.gallery-page__top {
+		display: inline-flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+	.filter__two-btn {
+		flex-direction: column;
+		width: 100%;
+	}
+	.filter__btn-update {
+		margin-top: 10px;
+		width: 100%;
+	}
+	.filter__item:nth-child(2n + 1) {
+		margin-right: 0;
+	}
 }

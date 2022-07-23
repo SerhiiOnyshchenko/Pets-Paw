@@ -9,6 +9,11 @@
 	background: var(--bg-grey-another);
 	border-radius: 10px;
 }
+.log__text--table {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
 .log__item:not(:last-child) {
 	margin-bottom: 10px;
 }
@@ -22,10 +27,13 @@
 	margin-right: 20px;
 	color: var(--color);
 }
+.log__text.log__text--mobile {
+	display: none;
+}
 .log__id {
 	font-weight: 500;
 	color: var(--color);
-	margin: 0 5px;
+	/* margin: 0 5px; */
 }
 
 .log__icon {
@@ -45,4 +53,20 @@
 }
 .log__icon--favourite {
 	background-image: url(../../../image/search/fav-color-30.png);
+}
+
+@media screen and (max-width: 768px) {
+	.log__item {
+		flex-direction: column;
+	}
+	.log__text--table {
+		justify-content: space-between;
+		margin-bottom: 10px;
+	}
+	.log__text {
+		display: none;
+	}
+	.log__text.log__text--mobile {
+		display: block;
+	}
 }

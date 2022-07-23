@@ -55,3 +55,8 @@
 		right: 150px;
 	}
 }
+@media screen and (max-width: 768px) {
+	.toggle-theme__box {
+		right: 120px;
+	}
+}

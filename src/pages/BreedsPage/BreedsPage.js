@@ -54,7 +54,7 @@ export default function BreedsPage({ search, setSearch, categories }) {
       setSelectedImg(breedId);
       navigate(`${breedId}`);
    };
-
+   const widthMobile = window.innerWidth;
    const arrSelect = [...categories].map(el => el.name);
    const limites = ['Limit: 5', 'Limit: 10', 'Limit: 15', 'Limit: 20'];
 
@@ -62,7 +62,7 @@ export default function BreedsPage({ search, setSearch, categories }) {
       <Container>
          <SearchBar search={search} setSearch={setSearch} />
          <div className="page-box">
-            <div className="page-top">
+            <div className="page-top breed-page__top">
                <BackButton />
                <ButtonInfo>breeds</ButtonInfo>
                {!selectedImg ? (
@@ -70,35 +70,37 @@ export default function BreedsPage({ search, setSearch, categories }) {
                      <ButtonSelect
                         main={breeds}
                         options={arrSelect}
-                        width={200}
+                        width={widthMobile > 768 ? '200px' : '100%'}
                         id={'breeds'}
                         setSort={setBreeds}
                      />
-                     <ButtonSelect
-                        main={limit}
-                        options={limites}
-                        width={100}
-                        id={'limit'}
-                        setSort={setLimit}
-                     />
-                     <button
-                        className={
-                           order === 'Desc'
-                              ? 'btn-sort btn-sort--ZA--active'
-                              : 'btn-sort btn-sort--ZA'
-                        }
-                        type="button"
-                        onClick={() => setOrder('Desc')}
-                     ></button>
-                     <button
-                        className={
-                           order === 'Asc'
-                              ? 'btn-sort btn-sort--AZ--active'
-                              : 'btn-sort btn-sort--AZ'
-                        }
-                        type="button"
-                        onClick={() => setOrder('Asc')}
-                     ></button>
+                     <div className="breed-page--mobile">
+                        <ButtonSelect
+                           main={limit}
+                           options={limites}
+                           width={widthMobile > 768 ? '100px' : '220px'}
+                           id={'limit'}
+                           setSort={setLimit}
+                        />
+                        <button
+                           className={
+                              order === 'Desc'
+                                 ? 'btn-sort btn-sort--ZA--active'
+                                 : 'btn-sort btn-sort--ZA'
+                           }
+                           type="button"
+                           onClick={() => setOrder('Desc')}
+                        ></button>
+                        <button
+                           className={
+                              order === 'Asc'
+                                 ? 'btn-sort btn-sort--AZ--active'
+                                 : 'btn-sort btn-sort--AZ'
+                           }
+                           type="button"
+                           onClick={() => setOrder('Asc')}
+                        ></button>
+                     </div>
                   </>
                ) : (
                   <ButtonInfo>{selectedImg}</ButtonInfo>

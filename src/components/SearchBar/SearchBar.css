@@ -15,6 +15,9 @@
 	margin-right: 10px;
 	transition: var(--transition);
 }
+.search-bar__form.search-bar__form--mobile {
+	display: none;
+}
 .search-bar__form:hover {
 	border: 2px solid #fbe0dc;
 }
@@ -92,4 +95,19 @@ input:focus,
 }
 .search-bar__nav-link:not(:last-child) {
 	margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+	.search-bar__box {
+		display: flex;
+		justify-content: space-between;
+	}
+	.search-bar__form {
+		display: none;
+	}
+	.search-bar__form.search-bar__form--mobile {
+		display: flex;
+		margin-bottom: 10px;
+		width: 100%;
+	}
 }
