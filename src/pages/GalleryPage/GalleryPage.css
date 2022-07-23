@@ -1,6 +1,6 @@
-.gallery-page-filter {
+.gallery-page__filter {
 	padding: 10px 20px;
-	width: 641px;
+	width: 100%;
 	height: 156px;
 	display: flex;
 	flex-wrap: wrap;
@@ -8,20 +8,20 @@
 	border-radius: 20px;
 	margin-bottom: 20px;
 }
-.filter-item {
+.filter__item {
 	width: 290px;
 	margin-bottom: 10px;
 }
-.filter-item .Select-main {
+.filter__item .Select-main {
 	background-color: var(--bg-another);
 }
-.filter-item .Select-main--title {
+.filter__item .Select-main--title {
 	color: var(--color);
 }
-.filter-item:nth-child(2n + 1) {
+.filter__item:nth-child(2n + 1) {
 	margin-right: 20px;
 }
-.filter-item-title {
+.filter__title {
 	margin-left: 10px;
 	font-weight: 500;
 	font-size: 10px;
@@ -29,7 +29,7 @@
 	text-transform: uppercase;
 	color: var(--grey-color);
 }
-.btn-update {
+.filter__btn-update {
 	width: 40px;
 	height: 40px;
 	background-image: url(../../image/update/update-20.png);
@@ -39,7 +39,7 @@
 	border-radius: 10px;
 	transition: var(--transition);
 }
-.btn-update:hover {
+.filter__btn-update:hover {
 	background-image: url(../../image/update/update-white-20.png);
 	background-color: var(--btn-bg-active);
 }

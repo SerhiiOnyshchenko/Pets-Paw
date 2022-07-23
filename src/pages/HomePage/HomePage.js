@@ -1,11 +1,17 @@
+import SideBar from '../../components/SideBar/SideBar';
 import Container from './../../components/Container/Container';
-import s from './HomePage.module.css';
+import './HomePage.css';
 
 export default function HomePage() {
    return (
-      <Container>
-         <div className={s.rectangle}></div>
-         <div className={s.img}></div>
-      </Container>
+      <div className="home-page__side-bar">
+         <SideBar />
+         <div className="home-page__wrapper">
+            <Container>
+               <div className="home-page__rectangle"></div>
+               <div className="home-page__img"></div>
+            </Container>
+         </div>
+      </div>
    );
 }

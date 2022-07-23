@@ -1,11 +1,11 @@
-.loader-border {
+.loader__border {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
 	min-height: 500px;
 }
-.loader-icon {
+.loader__icon {
 	width: 100px;
 	height: 100px;
 	background: url(../../image/loader.png) no-repeat center;

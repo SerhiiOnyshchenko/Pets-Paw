@@ -1,18 +1,18 @@
-.log-item {
+.log__item {
 	display: flex;
 	align-items: center;
 	padding: 15px;
-	width: 640px;
+	width: 100%;
 	font-size: 16px;
 	line-height: 24px;
 	color: #8c8c8c;
 	background: var(--bg-grey-another);
 	border-radius: 10px;
 }
-.log-item:not(:last-child) {
+.log__item:not(:last-child) {
 	margin-bottom: 10px;
 }
-.log-time {
+.log__time {
 	padding: 3px 10px;
 	width: 61px;
 	font-size: 16px;
@@ -22,13 +22,13 @@
 	margin-right: 20px;
 	color: var(--color);
 }
-.log-id {
+.log__id {
 	font-weight: 500;
 	color: var(--color);
 	margin: 0 5px;
 }
 
-.log-icon {
+.log__icon {
 	width: 20px;
 	height: 20px;
 	margin-right: 5px;
@@ -37,12 +37,12 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-.log-icon--like {
+.log__icon--like {
 	background-image: url(../../../image/search/like-color-30.png);
 }
-.log-icon--dislike {
+.log__icon--dislike {
 	background-image: url(../../../image/search/dislike-color-30.png);
 }
-.log-icon--favourite {
+.log__icon--favourite {
 	background-image: url(../../../image/search/fav-color-30.png);
 }

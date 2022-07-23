@@ -1,8 +1,8 @@
-.SearchBar-box {
+.search-bar__box {
 	display: flex;
 	margin-bottom: 10px;
 }
-.SearchBar-form {
+.search-bar__form {
 	padding: 10px;
 	display: flex;
 	justify-content: space-between;
@@ -15,12 +15,12 @@
 	margin-right: 10px;
 	transition: var(--transition);
 }
-.SearchBar-form:hover {
+.search-bar__form:hover {
 	border: 2px solid #fbe0dc;
 }
 
 input:focus,
-.SearchBar-input {
+.search-bar__input {
 	flex-grow: 1;
 	padding: 5px 10px;
 	font-weight: 400;
@@ -30,7 +30,7 @@ input:focus,
 	color: var(--color);
 }
 
-.SearchBar-submit {
+.search-bar__submit {
 	width: 40px;
 	height: 40px;
 	border-radius: 10px;
@@ -40,15 +40,15 @@ input:focus,
 	background-repeat: no-repeat;
 	transition: var(--transition);
 }
-.SearchBar-submit:hover {
+.search-bar__submit:hover {
 	background-color: var(--btn-bg-active);
 	background-image: url(../../image/search/search-white-20.png);
 }
 
-.SearchBar-nav {
+.search-bar__nav {
 	display: flex;
 }
-.SearchBar-nav__link {
+.search-bar__nav-link {
 	display: block;
 	width: 60px;
 	height: 60px;
@@ -56,40 +56,40 @@ input:focus,
 	transition: var(--transition);
 }
 
-.SearchBar-nav__link--likes {
+.search-bar__nav-link--likes {
 	background: url(../../image/search/like-30.png) no-repeat center, var(--btn-bg-default);
 }
-.SearchBar-nav__link--likes:hover {
+.search-bar__nav-link--likes:hover {
 	background: url(../../image/search/like-30.png) no-repeat center, var(--btn-bg-hover);
 }
-.SearchBar-nav__link--likes.SearchBar-nav__link--active:hover,
-.SearchBar-nav__link--likes.SearchBar-nav__link--active {
+.search-bar__nav-link--likes.search-bar__nav-link--active:hover,
+.search-bar__nav-link--likes.search-bar__nav-link--active {
 	background: url(../../image/search/like-white-30.png) no-repeat center, var(--btn-bg-active);
 }
 
-.SearchBar-nav__link--favourites {
+.search-bar__nav-link--favourites {
 	background: url(../../image/search/fav-30.png) no-repeat center, var(--btn-bg-default);
 }
-.SearchBar-nav__link--favourites:hover {
+.search-bar__nav-link--favourites:hover {
 	background: url(../../image/search/fav-30.png) no-repeat center, var(--btn-bg-hover);
 }
-.SearchBar-nav__link--favourites.SearchBar-nav__link--active:hover,
-.SearchBar-nav__link--favourites.SearchBar-nav__link--active {
+.search-bar__nav-link--favourites.search-bar__nav-link--active:hover,
+.search-bar__nav-link--favourites.search-bar__nav-link--active {
 	background: url(../../image/search/fav-white-30.png) no-repeat center, var(--btn-bg-active);
 }
-.SearchBar-nav__link:not(:last-child) {
+.search-bar__nav-link:not(:last-child) {
 	margin-right: 10px;
 }
-.SearchBar-nav__link--dislikes {
+.search-bar__nav-link--dislikes {
 	background: url(../../image/search/dislike-30.png) no-repeat center, var(--btn-bg-default);
 }
-.SearchBar-nav__link--dislikes:hover {
+.search-bar__nav-link--dislikes:hover {
 	background: url(../../image/search/dislike-30.png) no-repeat center, var(--btn-bg-hover);
 }
-.SearchBar-nav__link--dislikes.SearchBar-nav__link--active:hover,
-.SearchBar-nav__link--dislikes.SearchBar-nav__link--active {
+.search-bar__nav-link--dislikes.search-bar__nav-link--active:hover,
+.search-bar__nav-link--dislikes.search-bar__nav-link--active {
 	background: url(../../image/search/dislike-white-30.png) no-repeat center, var(--btn-bg-active);
 }
-.SearchBar-nav__link:not(:last-child) {
+.search-bar__nav-link:not(:last-child) {
 	margin-right: 10px;
 }

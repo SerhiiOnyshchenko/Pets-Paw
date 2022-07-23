@@ -1,4 +1,4 @@
-.modal-backdrop {
+.modal-page__backdrop {
 	position: fixed;
 	padding: 30px;
 	top: 0;
@@ -13,19 +13,12 @@
 	transition: var(--transition);
 	z-index: 100;
 }
-.modal-backdrop .App {
+.modal-page__backdrop .App {
 	height: 100%;
 }
-.is-hidden {
-	opacity: 0;
-	visibility: hidden;
-	pointer-events: none;
-}
-.backdrop.is-hidden {
-	transform: scale(1.1);
-}
-.modal-content {
-	padding: 100px 20px;
+
+.modal-page__content {
+	padding: 80px 20px 20px;
 	margin-left: auto;
 	margin-right: 30px;
 	position: relative;
@@ -36,7 +29,7 @@
 	background: var(--bg-grey);
 	border-radius: 20px;
 }
-.modal-btn-close {
+.modal-page__btn-close {
 	position: absolute;
 	top: 20px;
 	right: 20px;
@@ -49,29 +42,29 @@
 	border-radius: 10px;
 	transition: var(--transition);
 }
-.modal-btn-close:hover {
+.modal-page__btn-close:hover {
 	background-color: var(--btn-bg-active);
 	background-image: url(../../image/modal/close-white-20.png);
 }
 
-.modal-title {
+.modal-page__title {
 	font-weight: 500;
 	font-size: 36px;
 	line-height: 52px;
 	color: var(--color);
 	margin-bottom: 10px;
 }
-.modal-link {
+.modal-page__link {
 	color: #ff868e;
 }
-.modal-pretitle {
+.modal-page__pretitle {
 	font-weight: 400;
 	font-size: 20px;
 	line-height: 30px;
 	color: var(--grey-color);
 	margin-bottom: 40px;
 }
-.modal-drag-box {
+.modal-page__drag-box {
 	position: relative;
 	width: 640px;
 	display: flex;
@@ -79,7 +72,7 @@
 	justify-content: space-between;
 	margin-bottom: 20px;
 }
-.modal-drag {
+.modal-page__drag {
 	width: 640px;
 	height: 320px;
 	display: flex;
@@ -96,15 +89,15 @@
 	border: 2px dashed var(--btn-bg-hover);
 	border-radius: 20px;
 }
-.modal-drag--error {
+.modal-page__drag--error {
 	background-color: var(--btn-bg-hover);
 	border: 2px dashed #ff868e;
 }
-.modal-drag span {
+.modal-page__drag span {
 	margin: 0 5px;
 	color: var(--grey-color);
 }
-.modal-input {
+.modal-page__input {
 	position: absolute;
 	cursor: pointer;
 	top: 0;
@@ -115,15 +108,15 @@
 	height: 100%;
 	opacity: 0;
 }
-.modal-text {
+.modal-page__text {
 	font-size: 20px;
 	line-height: 30px;
 	color: var(--grey-color);
 	margin-bottom: 20px;
 }
 
-.modal-btn-upload,
-.modal-btn-loading {
+.modal-page__btn-upload,
+.modal-page__btn-loading {
 	display: flex;
 	margin: 0 auto;
 	background: var(--btn-bg-active);
@@ -139,7 +132,7 @@
 	margin-bottom: 20px;
 }
 
-.modal-btn-icon-upload {
+.modal-page__btn-icon-upload {
 	width: 16px;
 	height: 16px;
 	margin-right: 10px;
@@ -154,12 +147,12 @@
 		transform: rotate(-360deg);
 	}
 }
-.modal-btn-upload:hover {
+.modal-page__btn-upload:hover {
 	background: var(--btn-bg-hover);
 	color: #ff868e;
 }
 
-.modal-success {
+.modal-page__success {
 	display: flex;
 	align-items: center;
 	padding: 18px 20px;
@@ -171,20 +164,20 @@
 	background: var(--bg);
 	border-radius: 10px;
 }
-.modal-success--icon {
+.modal-page__success--icon {
 	width: 20px;
 	height: 20px;
 	margin-right: 10px;
 	background: url(../../image/modal/success-20.png) no-repeat center;
 }
-.modal-error--icon {
+.modal-page__error--icon {
 	width: 20px;
 	height: 20px;
 	margin-right: 10px;
 	background: url(../../image/modal/error-20.png) no-repeat center;
 }
 
-.modal-file-img {
+.modal-page__file-img {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -193,4 +186,14 @@
 	object-fit: cover;
 	transform: translate(-50%, -50%);
 	border-radius: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+	.modal-page__content {
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 768px;
+	}
 }

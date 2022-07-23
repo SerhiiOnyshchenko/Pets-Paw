@@ -105,26 +105,26 @@ export default function VotingPage({ search, setSearch }) {
                <Loader />
             ) : (
                <>
-                  <div className="img-box">
+                  <div className="vote-page__img-box">
                      <img
-                        className="random-img"
+                        className="vote-page__img-random"
                         height="360"
                         src={dataImg.url}
                         alt="img"
                      />
-                     <div className="img-action">
+                     <div className="vote-page__img-action">
                         <button
-                           className="img-action-btn img-action-btn--like"
+                           className="vote-page__img-action-btn vote-page__img-action-btn--like"
                            type="button"
                            onClick={() => likeDislike(true)}
                         ></button>
                         <button
-                           className="img-action-btn img-action-btn--favorite"
+                           className="vote-page__img-action-btn vote-page__img-action-btn--favorite"
                            type="button"
                            onClick={handleFavourites}
                         ></button>
                         <button
-                           className="img-action-btn img-action-btn--dislike"
+                           className="vote-page__img-action-btn vote-page__img-action-btn--dislike"
                            type="button"
                            onClick={() => likeDislike(false)}
                         ></button>

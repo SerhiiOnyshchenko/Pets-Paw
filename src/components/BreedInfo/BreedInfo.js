@@ -37,14 +37,14 @@ export default function BreedInfo() {
    for (const img of selectedImg) {
       images.push({
          original: img.url,
-         originalClass: 'breed-info-img',
+         originalClass: 'breed-info__img',
          originalHeight: 360,
-         bulletClass: 'breed-info-circle',
+         bulletClass: 'breed-info__circle',
       });
    }
    return (
       <>
-         <div className="breed-info-box">
+         <div className="breed-info__box">
             <ImageGallery
                items={images}
                showFullscreenButton={false}
@@ -55,30 +55,30 @@ export default function BreedInfo() {
                autoPlay={true}
             />
          </div>
-         <div className="breed-info-text">
-            <h2 className="breed-info-name">{name}</h2>
-            <p className="breed-info-title">{bred_for}</p>
-            <div className="breed-info-flex">
-               <div className="breed-info-temper">
+         <div className="breed-info__text">
+            <h2 className="breed-info__name">{name}</h2>
+            <p className="breed-info__title">{bred_for}</p>
+            <div className="breed-info__flex">
+               <div className="breed-info__temper">
                   <p>Temperament:</p>
-                  <p className="breed-info-text-info">{temperament}</p>
+                  <p className="breed-info__text-info">{temperament}</p>
                </div>
-               <div className="breed-info-anuther">
+               <div className="breed-info__anuther">
                   <p>
                      Height:{' '}
-                     <span className="breed-info-text-info">
+                     <span className="breed-info__text-info">
                         {height.metric} cm
                      </span>
                   </p>
                   <p>
                      Weight:{' '}
-                     <span className="breed-info-text-info">
+                     <span className="breed-info__text-info">
                         {weight.metric} kg
                      </span>
                   </p>
                   <p>
                      Life span:{' '}
-                     <span className="breed-info-text-info">{life_span}</span>
+                     <span className="breed-info__text-info">{life_span}</span>
                   </p>
                </div>
             </div>

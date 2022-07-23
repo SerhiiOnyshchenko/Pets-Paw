@@ -4,3 +4,9 @@
 	width: 775px;
 	height: 100%;
 }
+@media screen and (max-width: 1024px) {
+	.container {
+		padding: 30px;
+		width: 768px;
+	}
+}

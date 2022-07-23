@@ -48,8 +48,9 @@ export default function SearchPage({ search, setSearch }) {
                <BackButton />
                <ButtonInfo>search</ButtonInfo>
             </div>
-            <div className="search-text">
-               Search results for: <span className="search-name">{search}</span>
+            <div className="search-page__text">
+               Search results for:{' '}
+               <span className="search-page__name">{search}</span>
             </div>
             {loader ? (
                <Loader />

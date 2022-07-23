@@ -3,7 +3,7 @@ import BreedsItem from './BreedsItem/BreedsItem';
 
 export default function BreedsGrid({ images, click }) {
    return (
-      <ul className="breeds-items">
+      <ul className="breeds__items">
          {images.map(el => (
             <BreedsItem
                key={el.id}

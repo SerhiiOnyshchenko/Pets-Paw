@@ -88,9 +88,9 @@ export default function GalleryPage({ search, setSearch, categories }) {
                <ButtonInfo>gallery</ButtonInfo>
                <ButtonUpload click={() => setShowModal(true)} />
             </div>
-            <div className="gallery-page-filter">
-               <div className="filter-item">
-                  <p className="filter-item-title">order</p>
+            <div className="gallery-page__filter filter">
+               <div className="filter__item">
+                  <p className="filter__title">order</p>
                   <ButtonSelect
                      main={order}
                      options={orderArr}
@@ -99,8 +99,8 @@ export default function GalleryPage({ search, setSearch, categories }) {
                      setSort={setOrder}
                   />
                </div>
-               <div className="filter-item">
-                  <p className="filter-item-title">type</p>
+               <div className="filter__item">
+                  <p className="filter__title">type</p>
                   <ButtonSelect
                      main={type}
                      options={typeArr}
@@ -109,8 +109,8 @@ export default function GalleryPage({ search, setSearch, categories }) {
                      setSort={setType}
                   />
                </div>
-               <div className="filter-item">
-                  <p className="filter-item-title">breed</p>
+               <div className="filter__item">
+                  <p className="filter__title">breed</p>
                   <ButtonSelect
                      main={breeds}
                      options={arrSelect}
@@ -119,8 +119,8 @@ export default function GalleryPage({ search, setSearch, categories }) {
                      setSort={setBreeds}
                   />
                </div>
-               <div className="filter-item">
-                  <p className="filter-item-title">limit</p>
+               <div className="filter__item">
+                  <p className="filter__title">limit</p>
                   <div style={{ display: 'flex' }}>
                      <ButtonSelect
                         main={limit}
@@ -130,7 +130,7 @@ export default function GalleryPage({ search, setSearch, categories }) {
                         setSort={setLimit}
                      />
                      <button
-                        className="btn-update"
+                        className="filter__btn-update"
                         type="button"
                         onClick={updateFilter}
                      ></button>

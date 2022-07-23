@@ -29,17 +29,21 @@ export default function ToggleTheme() {
    };
 
    return (
-      <div className="toggle-theme-box">
+      <div className="toggle-theme__box">
          <div
             className={
                toggle
-                  ? 'toggle-theme-icon toggle-theme-icon--light'
-                  : 'toggle-theme-icon toggle-theme-icon--dark'
+                  ? 'toggle-theme__icon toggle-theme__icon--light'
+                  : 'toggle-theme__icon toggle-theme__icon--dark'
             }
          ></div>
-         <div className="toggle-theme-checked-box" onClick={toggleTheme}>
+         <div className="toggle-theme__checked-box" onClick={toggleTheme}>
             <div
-               className={toggle ? 'toggle-theme--light' : 'toggle-theme--dark'}
+               className={
+                  toggle
+                     ? 'toggle-theme__check--light'
+                     : 'toggle-theme__check--dark'
+               }
             ></div>
          </div>
       </div>

@@ -1,8 +1,8 @@
-.breeds-item {
+.breeds__item {
 	position: relative;
 	cursor: pointer;
 }
-.breeds-img {
+.breeds__img {
 	position: relative;
 	display: block;
 	width: 100%;
@@ -11,7 +11,7 @@
 	border-radius: 20px;
 }
 
-.breeds-item:before {
+.breeds__item:before {
 	content: " ";
 	opacity: 0;
 	display: block;
@@ -26,7 +26,7 @@
 	transition: var(--transition);
 }
 
-.breeds-img-name {
+.breeds__img-name {
 	position: absolute;
 	display: block;
 	opacity: 0;
@@ -44,7 +44,7 @@
 	z-index: 3;
 	transition: var(--transition);
 }
-.breeds-item:hover .breeds-img-name,
-.breeds-item:hover::before {
+.breeds__item:hover .breeds__img-name,
+.breeds__item:hover::before {
 	opacity: 1;
 }

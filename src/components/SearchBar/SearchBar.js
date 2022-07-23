@@ -1,6 +1,7 @@
 import './SearchBar.css';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import MenuBurger from '../MenuBurger/MenuBurger';
 
 export default function SearchBar({ search, setSearch, active }) {
    const navigate = useNavigate();
@@ -11,19 +12,19 @@ export default function SearchBar({ search, setSearch, active }) {
       removeActiveLink();
       if (location.pathname === '/likes') {
          const link = document.getElementById('/likes');
-         link.classList.add('SearchBar-nav__link--active');
+         link.classList.add('search-bar__nav-link--active');
       } else if (location.pathname === '/favourites') {
          const link = document.getElementById('/favourites');
-         link.classList.add('SearchBar-nav__link--active');
+         link.classList.add('search-bar__nav-link--active');
       } else if (location.pathname === '/dislikes') {
          const link = document.getElementById('/dislikes');
-         link.classList.add('SearchBar-nav__link--active');
+         link.classList.add('search-bar__nav-link--active');
       }
    }, [location]);
 
    useEffect(() => {
-      const input = document.querySelector('.SearchBar-input');
-      const form = document.querySelector('.SearchBar-form');
+      const input = document.querySelector('.search-bar__input');
+      const form = document.querySelector('.search-bar__form');
       input.addEventListener('focus', () => {
          form.style.border = '2px solid #ff868e';
       });
@@ -42,38 +43,39 @@ export default function SearchBar({ search, setSearch, active }) {
    };
 
    const removeActiveLink = () => {
-      const arrLinks = document.querySelectorAll('.SearchBar-nav__link');
+      const arrLinks = document.querySelectorAll('.search-bar__nav-link');
       arrLinks.forEach(link =>
-         link.classList.remove('SearchBar-nav__link--active')
+         link.classList.remove('search-bar__nav-link--active')
       );
    };
 
    return (
-      <div className="SearchBar-box">
-         <form className="SearchBar-form" onSubmit={handleSubmit}>
+      <div className="search-bar__box">
+         <MenuBurger />
+         <form className="search-bar__form" onSubmit={handleSubmit}>
             <input
-               className="SearchBar-input"
+               className="search-bar__input"
                type="text"
                name="search"
                value={inputSearch}
                onChange={e => setInputSearch(e.target.value)}
                placeholder="Search for breeds by name"
             />
-            <button className="SearchBar-submit" type="submit"></button>
+            <button className="search-bar__submit" type="submit"></button>
          </form>
-         <nav className="SearchBar-nav">
+         <nav className="search-bar__nav">
             <Link
-               className="SearchBar-nav__link SearchBar-nav__link--likes"
+               className="search-bar__nav-link search-bar__nav-link--likes"
                to="/likes"
                id="/likes"
             ></Link>
             <Link
-               className="SearchBar-nav__link SearchBar-nav__link--favourites "
+               className="search-bar__nav-link search-bar__nav-link--favourites "
                to="/favourites"
                id="/favourites"
             ></Link>
             <Link
-               className="SearchBar-nav__link SearchBar-nav__link--dislikes"
+               className="search-bar__nav-link search-bar__nav-link--dislikes"
                to="/dislikes"
                id="/dislikes"
             ></Link>

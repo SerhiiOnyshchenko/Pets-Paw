@@ -3,7 +3,7 @@ import GalleryItem from './GalleryItem/GalleryItem';
 
 export default function GalleryGrid({ images, click, showName }) {
    return (
-      <ul className="gallery-items">
+      <ul className="gallery__items">
          {images.map(el => (
             <GalleryItem
                key={el.id}

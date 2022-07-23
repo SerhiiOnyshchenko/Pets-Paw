@@ -1,0 +1,25 @@
+.menu-burger,
+.menu-burger .side-bar {
+	display: none;
+}
+
+.menu-burger__btn-open-menu {
+	width: 60px;
+	height: 60px;
+
+	background-color: var(--btn-bg-default);
+	background-image: url(../../image/menu-burger.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 20px;
+	margin-right: 10px;
+	transition: var(--transition);
+}
+.menu-burger__btn-open-menu:hover {
+	background-color: var(--btn-bg-hover);
+}
+@media screen and (max-width: 1024px) {
+	.menu-burger {
+		display: block;
+	}
+}

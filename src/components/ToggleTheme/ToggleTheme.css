@@ -1,4 +1,4 @@
-.toggle-theme-box {
+.toggle-theme__box {
 	position: absolute;
 	top: 30px;
 	right: 60px;
@@ -6,7 +6,7 @@
 	align-items: center;
 }
 
-.toggle-theme-icon {
+.toggle-theme__icon {
 	width: 24px;
 	height: 24px;
 	background-color: var(--bg);
@@ -17,16 +17,16 @@
 	margin-right: 5px;
 }
 
-.toggle-theme-icon--light {
+.toggle-theme__icon--light {
 	background-image: url(../../image/theme/eye.png);
 }
 
-.toggle-theme-icon--dark {
+.toggle-theme__icon--dark {
 	background-position: center 10px;
 	background-image: url(../../image/theme/eye-close.png);
 }
 
-.toggle-theme-checked-box {
+.toggle-theme__checked-box {
 	position: relative;
 	width: 44px;
 	height: 24px;
@@ -36,8 +36,8 @@
 	cursor: pointer;
 }
 
-.toggle-theme--light,
-.toggle-theme--dark {
+.toggle-theme__check--light,
+.toggle-theme__check--dark {
 	position: absolute;
 	top: 4px;
 	right: 4px;
@@ -47,6 +47,11 @@
 	border-radius: 40px;
 	transition: var(--transition);
 }
-.toggle-theme--dark {
+.toggle-theme__check--dark {
 	right: 24px;
+}
+@media screen and (max-width: 1024px) {
+	.toggle-theme__box {
+		right: 150px;
+	}
 }

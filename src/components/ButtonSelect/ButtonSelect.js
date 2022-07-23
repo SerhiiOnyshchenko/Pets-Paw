@@ -7,27 +7,27 @@ export default function ButtonSelect({ main, options, width, id, setSort }) {
    };
    const showOptions = () => {
       const selectOptions = document.getElementById(id);
-      selectOptions.classList.add('Select-options--active');
+      selectOptions.classList.add('select__options--active');
    };
    const hiddenOptions = () => {
       const selectOptions = document.getElementById(id);
-      selectOptions.classList.remove('Select-options--active');
+      selectOptions.classList.remove('select__options--active');
    };
    return (
-      <div className="Select-box">
+      <div className="select__box">
          <div
             style={{ width: `${width}px` }}
-            className="Select-main"
+            className="select__main"
             onClick={showOptions}
          >
-            <div className="Select-main--title">{main}</div>
-            <span className="Select-main--dropdown"></span>
+            <div className="select__main--title">{main}</div>
+            <span className="select__main--dropdown"></span>
          </div>
-         <div className="Select-options" id={id}>
+         <div className="select__options" id={id}>
             {options.map(el => (
                <div
                   key={el}
-                  className="Select-option"
+                  className="select__option"
                   onClick={() => selectMain(el)}
                >
                   {el}

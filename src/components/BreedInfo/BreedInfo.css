@@ -1,15 +1,15 @@
-.breed-info-box {
+.breed-info__box {
 	position: relative;
 	margin-bottom: 50px;
 }
-.image-gallery-slide.breed-info-img > .image-gallery-image {
+.image-gallery-slide.breed-info__img > .image-gallery-image {
 	width: 100%;
 	height: 360px;
 	object-fit: cover;
 	border-radius: 20px;
 }
 .image-gallery-slide-wrapper > .image-gallery-bullets,
-.breed-info-action {
+.breed-info__action {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -22,7 +22,7 @@
 	background: var(--bg-grey-white);
 	border-radius: 20px;
 }
-.image-gallery-slide-wrapper > .image-gallery-bullets .breed-info-circle {
+.image-gallery-slide-wrapper > .image-gallery-bullets .breed-info__circle {
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
@@ -30,22 +30,22 @@
 	border: none;
 }
 
-.image-gallery-slide-wrapper > .image-gallery-bullets .breed-info-circle:hover {
+.image-gallery-slide-wrapper > .image-gallery-bullets .breed-info__circle:hover {
 	border: none;
 	background: var(--btn-bg-active);
 }
 
-.image-gallery-slide-wrapper > .image-gallery-bullets .breed-info-circle.active {
+.image-gallery-slide-wrapper > .image-gallery-bullets .breed-info__circle.active {
 	border: none;
 	background: var(--btn-bg-active);
 }
-.image-gallery-slide-wrapper > .image-gallery-bullets .breed-info-circle.active:hover {
+.image-gallery-slide-wrapper > .image-gallery-bullets .breed-info__circle.active:hover {
 	transform: scale(1.2);
 	border: none;
 	background: var(--btn-bg-active);
 }
 
-.breed-info-text {
+.breed-info__text {
 	position: relative;
 	padding: 25px 40px;
 	width: 640px;
@@ -54,7 +54,7 @@
 	border: 2px solid var(--btn-bg-hover);
 	border-radius: 20px;
 }
-.breed-info-name {
+.breed-info__name {
 	display: block;
 	position: absolute;
 	top: -31px;
@@ -70,7 +70,7 @@
 	color: var(--color);
 	white-space: nowrap;
 }
-.breed-info-title {
+.breed-info__title {
 	min-height: 30px;
 	font-weight: 500;
 	font-size: 20px;
@@ -78,22 +78,22 @@
 	color: var(--grey-color);
 	margin-bottom: 20px;
 }
-.breed-info-flex {
+.breed-info__flex {
 	display: flex;
 	text-align: left;
 }
-.breed-info-temper,
-.breed-info-anuther {
+.breed-info__temper,
+.breed-info__anuther {
 	width: 50%;
 	font-weight: 500;
 	color: var(--color);
 	font-size: 16px;
 	line-height: 23px;
 }
-.breed-info-temper {
+.breed-info__temper {
 	margin-right: 20px;
 }
-.breed-info-text-info {
+.breed-info__text-info {
 	font-weight: 400;
 
 	color: var(--grey-color);

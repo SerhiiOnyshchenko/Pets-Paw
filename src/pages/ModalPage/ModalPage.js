@@ -48,31 +48,33 @@ export default function ModalPage({ onClose }) {
    }
 
    return createPortal(
-      <div className="modal-backdrop" onClick={closeModalEscKey}>
+      <div className="modal-page__backdrop" onClick={closeModalEscKey}>
          <div className="App">
-            <div className="modal-content">
+            <div className="modal-page__content">
                <button
-                  className="modal-btn-close"
+                  className="modal-page__btn-close"
                   type="button"
                   onClick={onClose}
                ></button>
-               <h2 className="modal-title">Upload a .jpg or .png Dog Image</h2>
-               <p className="modal-pretitle">
+               <h2 className="modal-page__title">
+                  Upload a .jpg or .png Dog Image
+               </h2>
+               <p className="modal-page__pretitle">
                   Any uploads must comply with the{' '}
                   <a
-                     className="modal-link"
+                     className="modal-page__link"
                      href="https://thecatapi.com/privacy"
                   >
                      upload guidelines{' '}
                   </a>
                   or face deletion.
                </p>
-               <div className="modal-drag-box">
+               <div className="modal-page__drag-box">
                   <div
                      className={
                         errorFile
-                           ? 'modal-drag modal-drag--error'
-                           : 'modal-drag'
+                           ? 'modal-page__drag modal-page__drag--error'
+                           : 'modal-page__drag'
                      }
                   >
                      Drag here<span>your file or</span>Click here
@@ -80,20 +82,20 @@ export default function ModalPage({ onClose }) {
                   </div>
                   {fileInput && (
                      <img
-                        className="modal-file-img"
+                        className="modal-page__file-img"
                         id="modalFileImg"
                         src={URL.createObjectURL(fileInput)}
                         alt={fileInput.name}
                      />
                   )}{' '}
                   <input
-                     className="modal-input"
+                     className="modal-page__input"
                      type="file"
                      accept=".jpg,.png"
                      onChange={changeInput}
                   ></input>
                </div>
-               <div className="modal-text">
+               <div className="modal-page__text">
                   {fileInput
                      ? `Image File Name: ${fileInput.name}`
                      : 'No file selected'}
@@ -102,16 +104,16 @@ export default function ModalPage({ onClose }) {
                   !errorFile &&
                   (uploading ? (
                      <button
-                        className="modal-btn-loading"
+                        className="modal-page__btn-loading"
                         type="button"
                         disabled={uploading}
                      >
-                        <div className="modal-btn-icon-upload"></div>
+                        <div className="modal-page__btn-icon-upload"></div>
                         uploading
                      </button>
                   ) : (
                      <button
-                        className="modal-btn-upload"
+                        className="modal-page__btn-upload"
                         type="button"
                         onClick={hendleUpload}
                      >
@@ -119,15 +121,15 @@ export default function ModalPage({ onClose }) {
                      </button>
                   ))}
                {successFile && (
-                  <div className="modal-success">
-                     <span className="modal-success--icon"></span>
+                  <div className="modal-page__success">
+                     <span className="modal-page__success--icon"></span>
                      Thanks for the Upload - Cat found!
                   </div>
                )}
 
                {errorFile && (
-                  <div className="modal-success">
-                     <span className="modal-error--icon"></span>
+                  <div className="modal-page__success">
+                     <span className="modal-page__error--icon"></span>
                      No Cat found - try a different one
                   </div>
                )}

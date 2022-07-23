@@ -4,101 +4,6 @@
 	max-width: 1440px;
 	margin: 0 auto;
 }
-.Side-bar {
-	position: sticky;
-	top: 0;
-	padding: 30px 60px;
-	width: 665px;
-	height: 100vh;
-	font-size: 20px;
-	line-height: 29px;
-	font-weight: 500;
-}
-.logo-link {
-	display: flex;
-	align-items: center;
-	margin-bottom: 80px;
-	color: inherit;
-}
-.logo-icon {
-	display: block;
-	width: 24px;
-	height: 24px;
-	margin-right: 8px;
-}
-.Title {
-	font-size: 44px;
-	line-height: 58px;
-	margin-bottom: 10px;
-}
-.titel-h2 {
-	margin-bottom: 20px;
-}
-.Text {
-	color: var(--grey-color);
-	margin-bottom: 60px;
-}
-.nav {
-	display: flex;
-}
-.link:not(:last-child) {
-	margin-right: 18px;
-}
-
-.link-img {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 154px;
-	height: 198px;
-
-	border-radius: 20px;
-	margin-bottom: 10px;
-	transition: var(--transition);
-}
-.link-img--vote {
-	background: #b4b7ff;
-	border: 4px solid rgba(255, 255, 255, 0.6);
-}
-.link-img--breed {
-	background: #97eab9;
-	border: 4px solid rgba(255, 255, 255, 0.6);
-}
-.link-img--gallery {
-	background: #ffd280;
-	border: 4px solid rgba(255, 255, 255, 0.6);
-}
-
-.link:hover .link-img {
-	border: 4px solid var(--img-border-hover);
-}
-.link--active .link-img,
-.link--active:hover .link-img {
-	border: 4px solid var(--img-border-active);
-}
-.link-btn {
-	width: 153.47px;
-	height: 36px;
-	padding: 10px 0;
-	background: var(--btn-bg-default);
-	border-radius: 10px;
-	text-align: center;
-	font-size: 12px;
-	line-height: 16px;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	color: var(--btn-color);
-	transition: var(--transition);
-}
-
-.link:hover .link-btn {
-	background: var(--btn-bg-hover);
-}
-.link--active .link-btn,
-.link--active:hover .link-btn {
-	background: var(--btn-bg-active);
-	color: var(--btn-active-color);
-}
 
 /* right box */
 
@@ -111,4 +16,19 @@
 .page-top {
 	display: flex;
 	margin-bottom: 20px;
+}
+@media screen and (max-width: 425px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 1024px) {
+	.App {
+		justify-content: center;
+		max-width: 768px;
+	}
+	.page-box {
+		width: 708px;
+	}
 }
