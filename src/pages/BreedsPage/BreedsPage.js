@@ -78,7 +78,13 @@ export default function BreedsPage({ search, setSearch, categories }) {
                         <ButtonSelect
                            main={limit}
                            options={limites}
-                           width={widthMobile > 768 ? '100px' : '220px'}
+                           width={
+                              widthMobile > 768
+                                 ? '100px'
+                                 : widthMobile > 425
+                                 ? '220px'
+                                 : '150px'
+                           }
                            id={'limit'}
                            setSort={setLimit}
                         />

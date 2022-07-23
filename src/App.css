@@ -18,7 +18,7 @@
 	margin-bottom: 20px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
 	.App {
 		justify-content: center;
 		max-width: 768px;
@@ -27,13 +27,13 @@
 		max-width: 708px;
 	}
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 	.App {
 		max-width: 425px;
 	}
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 424px) {
 	.App {
-		min-width: 320px;
+		max-width: 320px;
 	}
 }

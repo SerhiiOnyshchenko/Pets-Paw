@@ -97,7 +97,7 @@ input:focus,
 	margin-right: 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 	.search-bar__box {
 		display: flex;
 		justify-content: space-between;

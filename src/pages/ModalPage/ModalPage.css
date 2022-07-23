@@ -191,7 +191,7 @@
 	border-radius: 10px;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
 	.modal-page__content {
 		margin: 0 auto;
 		display: flex;
@@ -201,7 +201,7 @@
 	}
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 	.modal-page__content {
 		max-width: 425px;
 	}
@@ -237,7 +237,7 @@
 	}
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 424px) {
 	.modal-page__content {
 		width: 320px;
 	}

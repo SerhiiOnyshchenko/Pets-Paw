@@ -33,7 +33,7 @@
 	border: 2px solid #fbe0dc;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 	.breed-page--mobile {
 		justify-content: space-between;
 		width: 100%;
@@ -42,6 +42,12 @@
 		flex-wrap: wrap;
 		gap: 10px;
 		width: 100%;
+	}
+	.breed-page__top .btn-info,
+	.breed-page__top .back-btn {
+		padding-right: 15px;
+		padding-left: 15px;
+		margin-right: 0;
 	}
 	.select__box {
 		max-width: 100%;

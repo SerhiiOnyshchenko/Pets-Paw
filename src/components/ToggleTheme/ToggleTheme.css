@@ -50,13 +50,19 @@
 .toggle-theme__check--dark {
 	right: 24px;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
 	.toggle-theme__box {
 		right: 150px;
 	}
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 	.toggle-theme__box {
 		right: 120px;
+	}
+}
+@media screen and (max-width: 424px) {
+	.toggle-theme__box {
+		top: 20px;
+		right: 80px;
 	}
 }

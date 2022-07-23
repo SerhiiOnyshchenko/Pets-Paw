@@ -55,7 +55,7 @@
 	background-image: url(../../../image/search/fav-color-30.png);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 	.log__item {
 		flex-direction: column;
 	}
