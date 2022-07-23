@@ -18,7 +18,7 @@
 .menu-burger__btn-open-menu:hover {
 	background-color: var(--btn-bg-hover);
 }
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1439px) {
 	.menu-burger {
 		display: block;
 	}

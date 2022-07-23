@@ -50,7 +50,7 @@
 .toggle-theme__check--dark {
 	right: 24px;
 }
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1439px) {
 	.toggle-theme__box {
 		right: 150px;
 	}

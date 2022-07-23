@@ -2,7 +2,7 @@
 	position: sticky;
 	top: 0;
 	padding: 30px 60px;
-	width: 665px;
+	max-width: 665px;
 	height: 100vh;
 	font-size: 20px;
 	line-height: 29px;
@@ -120,7 +120,7 @@
 	color: var(--btn-active-color);
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1439px) {
 	.side-bar {
 		display: none;
 		padding: 30px 100px;
