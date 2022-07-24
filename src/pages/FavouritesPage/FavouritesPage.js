@@ -6,22 +6,29 @@ import DefaultState from '../../components/DefaultState/DefaultState';
 import GalleryGrid from '../../components/GalleryGrid/GalleryGrid';
 import Loader from '../../components/Loader/Loader';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import { deleteFavouritesImage, getFavouritesImage } from '../../services/api';
+import { PetsOperations } from '../../redux/pets';
 import './FavouritesPage.css';
+import { useDispatch } from 'react-redux';
 
-export default function FavouritesPage({ search, setSearch }) {
+export default function FavouritesPage() {
+   const dispatch = useDispatch();
+
    const [breedImages, setBreedImages] = useState([]);
    const [loader, setLoader] = useState(false);
 
    useEffect(() => {
       fetchFavouritesImage();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
    const fetchFavouritesImage = async () => {
       setLoader(true);
       try {
-         const data = await getFavouritesImage();
-         const newDataArr = data.map(el =>
+         const { payload } = await dispatch(
+            PetsOperations.getFavouritesImage()
+         );
+
+         const newDataArr = payload.map(el =>
             !el.breeds ? { ...el, breeds: [{}] } : el
          );
          setBreedImages(newDataArr);
@@ -32,8 +39,9 @@ export default function FavouritesPage({ search, setSearch }) {
    };
 
    const removeFavouritesImage = async id => {
+      await dispatch(PetsOperations.deleteFavouritesImage(id));
+
       try {
-         await deleteFavouritesImage(id);
          await fetchFavouritesImage();
       } catch (error) {
          console.log(error);
@@ -42,7 +50,7 @@ export default function FavouritesPage({ search, setSearch }) {
 
    return (
       <Container>
-         <SearchBar search={search} setSearch={setSearch} />
+         <SearchBar />
          <div className="page-box">
             <div className="page-top">
                <BackButton />

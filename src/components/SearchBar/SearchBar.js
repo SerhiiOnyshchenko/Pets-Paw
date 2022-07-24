@@ -2,11 +2,14 @@ import './SearchBar.css';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import MenuBurger from '../MenuBurger/MenuBurger';
+import { useDispatch } from 'react-redux';
+import { PetsOperations } from '../../redux/pets';
 
-export default function SearchBar({ search, setSearch, active }) {
+export default function SearchBar() {
    const navigate = useNavigate();
-   const [inputSearch, setInputSearch] = useState('');
+   const dispatch = useDispatch();
    const location = useLocation();
+   const [inputSearch, setInputSearch] = useState('');
 
    useEffect(() => {
       removeActiveLink();
@@ -36,7 +39,7 @@ export default function SearchBar({ search, setSearch, active }) {
    const handleSubmit = e => {
       e.preventDefault();
       if (inputSearch) {
-         setSearch(inputSearch);
+         dispatch(PetsOperations.setSearchText(inputSearch));
          setInputSearch('');
          navigate('/search');
       }

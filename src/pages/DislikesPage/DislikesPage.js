@@ -6,30 +6,29 @@ import DefaultState from '../../components/DefaultState/DefaultState';
 import GalleryGrid from '../../components/GalleryGrid/GalleryGrid';
 import Loader from '../../components/Loader/Loader';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import {
-   deleteVoteImage,
-   getImagesById,
-   getVoteHistory,
-} from '../../services/api';
 import './DislikesPage.css';
+import { useDispatch } from 'react-redux';
+import { PetsOperations } from '../../redux/pets';
 
-export default function DislikesPage({ search, setSearch }) {
+export default function DislikesPage() {
+   const dispatch = useDispatch();
    const [breedImages, setBreedImages] = useState([]);
    const [loader, setLoader] = useState(false);
    const [history, setHistory] = useState([]);
    useEffect(() => {
       histList();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 
    const histList = async () => {
       setLoader(true);
       try {
-         const data = await getVoteHistory();
-         setHistory(data);
+         const { payload } = await dispatch(PetsOperations.getVoteHistory());
+         setHistory(payload);
          const promiseLikesArr = [];
-         for (const el of data) {
+         for (const el of payload) {
             if (el.value === 0) {
-               promiseLikesArr.push(getImagesById(el.image_id));
+               promiseLikesArr.push(PetsOperations.getImagesById(el.image_id));
             }
          }
          const likeArr = await Promise.all(promiseLikesArr);
@@ -46,7 +45,7 @@ export default function DislikesPage({ search, setSearch }) {
    const removeLikes = async id => {
       const [imgId] = history.filter(el => el.image_id === id);
       try {
-         await deleteVoteImage(imgId.id);
+         await dispatch(PetsOperations.deleteVoteImage(imgId.id));
          await histList();
       } catch (err) {
          console.log(err);
@@ -55,7 +54,7 @@ export default function DislikesPage({ search, setSearch }) {
 
    return (
       <Container>
-         <SearchBar search={search} setSearch={setSearch} active={'dislikes'} />
+         <SearchBar active={'dislikes'} />
          <div className="page-box">
             <div className="page-top">
                <BackButton />

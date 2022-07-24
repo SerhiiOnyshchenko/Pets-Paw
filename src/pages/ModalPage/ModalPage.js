@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { uploadFile } from '../../services/api';
 import './ModalPage.css';
+import { PetsOperations } from '../../redux/pets';
 
 export default function ModalPage({ onClose }) {
    const modalRoot = useRef(document.querySelector('#modal-root'));
@@ -27,7 +27,7 @@ export default function ModalPage({ onClose }) {
    const hendleUpload = async () => {
       setUploading(true);
       try {
-         await uploadFile(fileInput);
+         await PetsOperations.postImageFile(fileInput);
          setSuccessFile(true);
          setFileInput(null);
       } catch (error) {

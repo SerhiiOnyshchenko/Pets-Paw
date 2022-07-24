@@ -1,9 +1,9 @@
 import './BreedInfo.css';
 import ImageGallery from 'react-image-gallery';
 import { useEffect, useState } from 'react';
-import { votingRandomImage } from '../../services/api';
 import { useLocation } from 'react-router-dom';
 import Loader from '../Loader/Loader';
+import { PetsOperations } from '../../redux/pets';
 
 export default function BreedInfo() {
    const [selectedImg, setSelectedImg] = useState([]);
@@ -18,7 +18,12 @@ export default function BreedInfo() {
 
    const fetchBredByName = async breedId => {
       try {
-         const data = await votingRandomImage(15, '', '', breedId);
+         const data = await PetsOperations.votingRandomImage(
+            15,
+            '',
+            '',
+            breedId
+         );
          setSelectedImg(data);
       } catch (error) {
          console.log(error);

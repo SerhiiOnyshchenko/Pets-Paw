@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
-import { votingRandomImage } from '../../services/api';
 import './BreedsPage.css';
 import Container from './../../components/Container/Container';
 import SearchBar from './../../components/SearchBar/SearchBar';
@@ -9,17 +8,21 @@ import ButtonInfo from './../../components/ButtonInfo/ButtonInfo';
 import ButtonSelect from '../../components/ButtonSelect/ButtonSelect';
 import BreedsGrid from '../../components/BreedsGrid/BreedsGrid';
 import Loader from '../../components/Loader/Loader';
+import { PetsOperations, PetsSelectors } from '../../redux/pets';
+import { useSelector, useDispatch } from 'react-redux';
 
-export default function BreedsPage({ search, setSearch, categories }) {
+export default function BreedsPage() {
+   const dispatch = useDispatch();
    const navigate = useNavigate();
-   const [breedImages, setBreedImages] = useState([]);
+   const location = useLocation();
+   const categories = useSelector(PetsSelectors.getCategories);
    const [limit, setLimit] = useState('Limit: 5');
    const [breeds, setBreeds] = useState('All breeds');
-   const [selectedImg, setSelectedImg] = useState(0);
    const [order, setOrder] = useState('Random');
 
-   const [loader, setLoader] = useState(false);
-   const location = useLocation();
+   const [breedImages, setBreedImages] = useState([]);
+   const [selectedImg, setSelectedImg] = useState(0);
+   const isLoader = useSelector(PetsSelectors.getIsLoading);
 
    useEffect(() => {
       setSelectedImg(location.pathname.split('/')[2]);
@@ -33,17 +36,19 @@ export default function BreedsPage({ search, setSearch, categories }) {
       }
 
       fetchBreeds(numLimit, breedsId.id, order);
-   }, [limit, breeds, order, categories]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [limit, breeds, order]);
 
-   const fetchBreeds = async (limit, breedId, order, type) => {
-      setLoader(true);
-      try {
-         const data = await votingRandomImage(limit, order, type, breedId);
-         setBreedImages(data);
-      } catch (error) {
-         console.log(error);
-      }
-      setLoader(false);
+   const fetchBreeds = async (limit, breedId, order, type = '') => {
+      const { payload } = await dispatch(
+         PetsOperations.fetchVotingImage({
+            limit,
+            order,
+            type,
+            breedId,
+         })
+      );
+      setBreedImages(payload);
    };
 
    const getImageId = breedId => {
@@ -60,7 +65,7 @@ export default function BreedsPage({ search, setSearch, categories }) {
 
    return (
       <Container>
-         <SearchBar search={search} setSearch={setSearch} />
+         <SearchBar />
          <div className="page-box">
             <div className="page-top breed-page__top">
                <BackButton />
@@ -112,7 +117,7 @@ export default function BreedsPage({ search, setSearch, categories }) {
                   <ButtonInfo>{selectedImg}</ButtonInfo>
                )}
             </div>
-            {loader ? (
+            {isLoader ? (
                <Loader />
             ) : !selectedImg ? (
                <BreedsGrid images={breedImages} click={getImageId} />

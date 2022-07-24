@@ -6,17 +6,17 @@ import ButtonInfo from './../../components/ButtonInfo/ButtonInfo';
 import ButtonSelect from './../../components/ButtonSelect/ButtonSelect';
 import GalleryGrid from './../../components/GalleryGrid/GalleryGrid';
 import ButtonUpload from '../../components/ButtonUpload/ButtonUpload';
-import {
-   deleteFavouritesImage,
-   getFavouritesImage,
-   postFavouritesImage,
-   votingRandomImage,
-} from '../../services/api';
 import './GalleryPage.css';
+import { useSelector, useDispatch } from 'react-redux';
 import ModalPage from '../ModalPage/ModalPage';
 import Loader from '../../components/Loader/Loader';
+import { PetsOperations, PetsSelectors } from '../../redux/pets';
 
-export default function GalleryPage({ search, setSearch, categories }) {
+export default function GalleryPage() {
+   const dispatch = useDispatch();
+
+   const categories = useSelector(PetsSelectors.getCategories);
+
    const [loader, setLoader] = useState(false);
    const [showModal, setShowModal] = useState(false);
    const [breedImages, setBreedImages] = useState([]);
@@ -32,7 +32,12 @@ export default function GalleryPage({ search, setSearch, categories }) {
    const fetchBreeds = async (limit = 5, order, type, breedId) => {
       setLoader(true);
       try {
-         const data = await votingRandomImage(limit, order, type, breedId);
+         const data = await PetsOperations.votingRandomImage(
+            limit,
+            order,
+            type,
+            breedId
+         );
          setBreedImages(data);
       } catch (error) {
          console.log(error);
@@ -41,18 +46,14 @@ export default function GalleryPage({ search, setSearch, categories }) {
    };
 
    const handleFavourites = async id => {
-      const data = await getFavouritesImage();
-      for (const el of data) {
+      const { payload } = await dispatch(PetsOperations.getFavouritesImage());
+      for (const el of payload) {
          if (el.image_id === id) {
-            await deleteFavouritesImage(el.id);
+            dispatch(PetsOperations.deleteFavouritesImage(el.id));
             return;
          }
       }
-      try {
-         await postFavouritesImage(id);
-      } catch (err) {
-         console.log(err);
-      }
+      dispatch(PetsOperations.postFavouritesImage(id));
    };
 
    const updateFilter = () => {
@@ -83,7 +84,7 @@ export default function GalleryPage({ search, setSearch, categories }) {
    const typeArr = ['All', 'Static', 'Animated'];
    return (
       <Container>
-         <SearchBar search={search} setSearch={setSearch} />
+         <SearchBar />
          <div className="page-box">
             <div className="page-top gallery-page__top">
                <BackButton />

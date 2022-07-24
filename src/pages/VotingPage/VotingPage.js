@@ -3,27 +3,27 @@ import Container from './../../components/Container/Container';
 import SearchBar from './../../components/SearchBar/SearchBar';
 import BackButton from './../../components/BackButton/BackButton';
 import ButtonInfo from './../../components/ButtonInfo/ButtonInfo';
-import {
-   postVoteImage,
-   votingRandomImage,
-   getVoteHistory,
-   postFavouritesImage,
-   getFavouritesImage,
-} from './../../services/api';
 import { useState, useEffect } from 'react';
 import UserActionLogs from '../../components/UserActionLogs/UserActionLogs';
 import Loader from './../../components/Loader/Loader';
+import { useDispatch, useSelector } from 'react-redux';
+import { PetsOperations, PetsSelectors } from '../../redux/pets';
 
-export default function VotingPage({ search, setSearch }) {
-   const [dataImg, setDataImg] = useState('');
+export default function VotingPage() {
+   const votingImage = useSelector(PetsSelectors.getVotingImage);
+   const isLoading = useSelector(PetsSelectors.getIsLoading);
+   const dispatch = useDispatch();
+
    const [historyLikeDislike, setHistoryLikeDislike] = useState([]);
    const [historyFavourit, setHistoryFavourit] = useState([]);
    const [showHistory, setShowHistory] = useState([]);
-   const [loader, setLoader] = useState(false);
 
    useEffect(() => {
-      fetchVoteImage();
-      histList();
+      dispatch(PetsOperations.fetchVotingImage({}));
+   }, [dispatch]);
+
+   useEffect(() => {
+      fetchHistoryList();
       fetchFavouritesImage();
       sortHistory();
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -44,64 +44,39 @@ export default function VotingPage({ search, setSearch }) {
       setShowHistory(history.slice(0, 5));
    };
 
-   const fetchVoteImage = async () => {
-      setLoader(true);
-      try {
-         const [data] = await votingRandomImage();
-         setDataImg(data);
-      } catch (err) {
-         console.log(err);
-      }
-      setLoader(false);
-   };
-
    const likeDislike = async value => {
-      try {
-         await postVoteImage(dataImg.id, value);
-         await fetchVoteImage();
-         await histList();
-      } catch (err) {
-         console.log(err);
-      }
+      await dispatch(
+         PetsOperations.postVoteImage({ id: votingImage.id, value })
+      );
+      dispatch(PetsOperations.fetchVotingImage({}));
+      fetchHistoryList();
    };
 
-   const handleFavourites = async () => {
-      try {
-         await postFavouritesImage(dataImg.id);
-         await fetchVoteImage();
-         await fetchFavouritesImage();
-      } catch (err) {
-         console.log(err);
-      }
+   const handleFavourites = () => {
+      dispatch(PetsOperations.postFavouritesImage(votingImage.id));
+      dispatch(PetsOperations.fetchVotingImage({}));
+      fetchFavouritesImage();
    };
 
    const fetchFavouritesImage = async () => {
-      try {
-         const data = await getFavouritesImage(5);
-         setHistoryFavourit(data);
-      } catch (err) {
-         console.log(err);
-      }
+      const { payload } = await dispatch(PetsOperations.getFavouritesImage(5));
+      setHistoryFavourit(payload);
    };
 
-   const histList = async () => {
-      try {
-         const data = await getVoteHistory(5);
-         setHistoryLikeDislike(data);
-      } catch (err) {
-         console.log(err);
-      }
+   const fetchHistoryList = async () => {
+      const { payload } = await dispatch(PetsOperations.getVoteHistory(5));
+      setHistoryLikeDislike(payload);
    };
 
    return (
       <Container>
-         <SearchBar search={search} setSearch={setSearch} />
+         <SearchBar />
          <div className="page-box">
             <div className="page-top">
                <BackButton />
                <ButtonInfo>voting</ButtonInfo>
             </div>
-            {loader ? (
+            {isLoading ? (
                <Loader />
             ) : (
                <>
@@ -109,7 +84,7 @@ export default function VotingPage({ search, setSearch }) {
                      <img
                         className="vote-page__img-random"
                         height="360"
-                        src={dataImg.url}
+                        src={votingImage.url}
                         alt="img"
                      />
                      <div className="vote-page__img-action">

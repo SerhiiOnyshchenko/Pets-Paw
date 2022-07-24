@@ -4,31 +4,37 @@ import ButtonInfo from '../../components/ButtonInfo/ButtonInfo';
 import Container from '../../components/Container/Container';
 import Loader from '../../components/Loader/Loader';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import { getBreedImagesByName, getImagesById } from '../../services/api';
 import './SearchPage.css';
 import DefaultState from './../../components/DefaultState/DefaultState';
 import BreedsGrid from '../../components/BreedsGrid/BreedsGrid';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { PetsOperations, PetsSelectors } from '../../redux/pets';
 
-export default function SearchPage({ search, setSearch }) {
+export default function SearchPage() {
    const navigate = useNavigate();
+   const searchText = useSelector(PetsSelectors.getSearchText);
+
    const [breedImages, setBreedImages] = useState([]);
    const [loader, setLoader] = useState(false);
 
    useEffect(() => {
-      fetchImagesByName(search);
-   }, [search]);
+      fetchImagesByName(searchText);
+   }, [searchText]);
 
    const fetchImagesByName = async name => {
       setLoader(true);
       try {
-         const data = await getBreedImagesByName(name);
-         let showImages = [];
+         const data = await PetsOperations.getBreedImagesByName(name);
+         let promiseImages = [];
          for (const el of data) {
             if (el.reference_image_id) {
-               showImages.push(await getImagesById(el.reference_image_id));
+               promiseImages.push(
+                  PetsOperations.getImagesById(el.reference_image_id)
+               );
             }
          }
+         const showImages = await Promise.all(promiseImages);
          setBreedImages(showImages);
       } catch (error) {
          console.log(error);
@@ -42,7 +48,7 @@ export default function SearchPage({ search, setSearch }) {
 
    return (
       <Container>
-         <SearchBar search={search} setSearch={setSearch} />
+         <SearchBar />
          <div className="page-box">
             <div className="page-top">
                <BackButton />
@@ -50,7 +56,7 @@ export default function SearchPage({ search, setSearch }) {
             </div>
             <div className="search-page__text">
                Search results for:{' '}
-               <span className="search-page__name">{search}</span>
+               <span className="search-page__name">{searchText}</span>
             </div>
             {loader ? (
                <Loader />
