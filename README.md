@@ -1,1 +1,2 @@
-# test-wacpaw
+# Pets-Paw
+Project, written on React.
